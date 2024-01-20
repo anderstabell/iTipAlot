@@ -95,10 +95,12 @@ struct ContentView: View {
             }
             .foregroundStyle(color)
             .padding()
-            Button("Save color") {
-                colorData.saveColor(color: color)
-            }
-            Spacer()
+            
+            Button("Save color") { colorData.saveColor(color: color) }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(.black.gradient)
+                .foregroundStyle(color.gradient)
         }
         .onAppear {
             color = colorData.loadColor()
