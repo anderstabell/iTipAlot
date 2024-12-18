@@ -8,39 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var checkAmount = ""
+    @State private var checkAmount = 0.0
     @State private var numberOfPeople = 2
-    @State private var tipPercentage = 20
+    @State private var tipPercentage = 2
     @FocusState private var amountIsFocused: Bool
     
-    @State private var color: Color = .primary
-    private var colorData = ColorData()
+    private let tipPercentages = [10, 15, 20, 25, 0]
     
-    let tipPercentages = [10, 15, 20, 25, 30, 0]
+    private var subTotal: Double { Double(checkAmount) }
     
-    var subTotalPerPerson: Double {
-        let peopleCount = Double(numberOfPeople + 2)
-        let subAmountPerPerson = checkAmount / peopleCount
-        
-        return subAmountPerPerson
-    }
-    /// ``TODO: Make tip per person work!!!!!!!`
-    var tipPerPerson: Double {
-        
-        
-        return 0
+    private var subTotalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople)
+        let subTotal = Double(checkAmount)
+        return subTotal / peopleCount
     }
     
-    var totalPerPerson: Double {
-        let peopleCount = Double(numberOfPeople + 2)
-        let tipSelection = Double(tipPercentage)
-        
-        let tipValue = checkAmount / 100 * tipSelection
-        let grandTotal = checkAmount + tipValue
-        let amountPerPerson = grandTotal / peopleCount
-        
+    private var tipValue: Double {
+        let tipSelection = Double (tipPercentages[tipPercentage])
+        let subTotal = Double(checkAmount)
+        return subTotal / 100 * tipSelection
+    }
+    
+    private var tipValuePerPerson: Double { tipValue / Double(numberOfPeople) }
+    
+    private var totalAmountWithTip: Double {
+        let tipSelection = Double (tipPercentages[tipPercentage])
+        let subTotal = Double(checkAmount)
+        let tipValue = subTotal / 100 * tipSelection
+        let grandTotal = subTotal + tipValue
+        return grandTotal
+    }
+    
+    private var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople)
+        let amountPerPerson = totalAmountWithTip / peopleCount
         return amountPerPerson
-        
     }
     
     var body: some View {
@@ -52,7 +54,7 @@ struct ContentView: View {
                         .focused($amountIsFocused)
                     
                     Picker("Number of People", selection: $numberOfPeople) {
-                        ForEach(2..<100) {
+                        ForEach(0..<101) {
                             Text("\($0) People")
                         }
                     }
@@ -60,11 +62,11 @@ struct ContentView: View {
                 
                 Section("Select tip amount") {
                     Picker("Tip percentage", selection: $tipPercentage) {
-                        ForEach(0..<101) {
+                        ForEach(tipPercentages, id: \.self) {
                             Text($0, format: .percent)
                         }
                     }
-//                    .pickerStyle(.segmented)
+                    .pickerStyle(.segmented)
                 }
                 
                 Section("Sub total per person") {
@@ -72,38 +74,23 @@ struct ContentView: View {
                 }
                 
                 Section("Tip per person") {
-                    Text(tipPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    Text(tipValue, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                 }
                 
                 Section("Total amount per person") {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                 }
             }
-            .navigationTitle("Split The 🧾")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Split The Check")
+            .navigationBarTitleDisplayMode(.automatic)
             .toolbar {
-                if amountIsFocused {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
                     Button("Done") {
                         amountIsFocused = false
                     }
                 }
             }
-            .foregroundStyle(color)
-            ColorPicker(selection: $color, supportsOpacity: false) {
-                Label("Pick Your Color", systemImage: "paintpalette.fill")
-                    .padding()
-            }
-            .foregroundStyle(color)
-            .padding()
-            
-            Button("Save color") { colorData.saveColor(color: color) }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(.black.gradient)
-                .foregroundStyle(color.gradient)
-        }
-        .onAppear {
-            color = colorData.loadColor()
         }
     }
 }
