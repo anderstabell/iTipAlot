@@ -17,7 +17,6 @@ struct CardView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(cardLabelText)
-//                .foregroundStyle(.cyan)
                 .fontWeight(.black)
             
             ZStack {

@@ -100,7 +100,6 @@ struct TitleView: View {
     var body: some View {
         HStack {
             Text(title)
-//                .foregroundStyle(.cyan)
             Spacer()
         }
     }
