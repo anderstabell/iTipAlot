@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     @State private var checkAmount = ""
     @State private var numberOfPeople = 2
     @State private var tipPercentage = 2
@@ -90,7 +90,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MainView()
 }
 
 struct TitleView: View {
