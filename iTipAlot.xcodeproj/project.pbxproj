@@ -11,6 +11,8 @@
 		760447622B581079008FDEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760447612B581079008FDEFB /* ContentView.swift */; };
 		760447642B58107A008FDEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447632B58107A008FDEFB /* Assets.xcassets */; };
 		760447672B58107A008FDEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447662B58107A008FDEFB /* Preview Assets.xcassets */; };
+		76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F1CF5C2D146F0C001DFA92 /* CardView.swift */; };
+		76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		760447612B581079008FDEFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		760447632B58107A008FDEFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		760447662B58107A008FDEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		76F1CF5C2D146F0C001DFA92 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				7604475F2B581079008FDEFB /* iTipAlotApp.swift */,
 				760447612B581079008FDEFB /* ContentView.swift */,
+				76F1CF5C2D146F0C001DFA92 /* CardView.swift */,
+				76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */,
 				760447632B58107A008FDEFB /* Assets.xcassets */,
 				760447652B58107A008FDEFB /* Preview Content */,
 			);
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				760447622B581079008FDEFB /* ContentView.swift in Sources */,
+				76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */,
 				760447602B581079008FDEFB /* iTipAlotApp.swift in Sources */,
+				76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var checkAmount = 0.0
+    @State private var checkAmount = ""
     @State private var numberOfPeople = 2
     @State private var tipPercentage = 2
     @FocusState private var amountIsFocused: Bool
     
     private let tipPercentages = [10, 15, 20, 25, 0]
     
-    private var subTotal: Double { Double(checkAmount) }
+    private var subTotal: Double { Double(checkAmount) ?? 0 }
     
     private var subTotalPerPerson: Double {
         let peopleCount = Double(numberOfPeople)
-        let subTotal = Double(checkAmount)
+        let subTotal = Double(checkAmount) ?? 0
         return subTotal / peopleCount
     }
     
     private var tipValue: Double {
         let tipSelection = Double (tipPercentages[tipPercentage])
-        let subTotal = Double(checkAmount)
+        let subTotal = Double(checkAmount) ?? 0
         return subTotal / 100 * tipSelection
     }
     
@@ -33,7 +33,7 @@ struct ContentView: View {
     
     private var totalAmountWithTip: Double {
         let tipSelection = Double (tipPercentages[tipPercentage])
-        let subTotal = Double(checkAmount)
+        let subTotal = Double(checkAmount) ?? 0
         let tipValue = subTotal / 100 * tipSelection
         let grandTotal = subTotal + tipValue
         return grandTotal
@@ -46,56 +46,62 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                        .keyboardType(.decimalPad)
-                        .focused($amountIsFocused)
-                    
-                    Picker("Number of People", selection: $numberOfPeople) {
-                        ForEach(0..<101) {
-                            Text("\($0) People")
-                        }
-                    }
-                }
-                
-                Section("Select tip amount") {
-                    Picker("Tip percentage", selection: $tipPercentage) {
-                        ForEach(tipPercentages, id: \.self) {
-                            Text($0, format: .percent)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                }
-                
-                Section("Sub total per person") {
-                    Text(subTotalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                }
-                
-                Section("Tip per person") {
-                    Text(tipValue, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                }
-                
-                Section("Total amount per person") {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+        VStack(alignment: .center, spacing: 20) {
+            CardView(cardLabelText: "PER PERSON", totalAmount: totalPerPerson, subtotalAmount: subTotalPerPerson, tipAmount: tipValuePerPerson)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            CardView(cardLabelText: "TOTAL", totalAmount: totalAmountWithTip, subtotalAmount: subTotal, tipAmount: tipValue)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            Picker("Tip Percentage", selection: $tipPercentage) {
+                ForEach(0..<tipPercentages.count, id: \.self) {
+                    Text("\(tipPercentages[$0])%")
                 }
             }
-            .navigationTitle("Split The Check")
-            .navigationBarTitleDisplayMode(.automatic)
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") {
-                        amountIsFocused = false
+            .pickerStyle(.segmented)
+            
+            TitleView(title: "BILL AMOUNT")
+            
+            HStack {
+                Text("$")
+                    .foregroundStyle(.primary)
+                    .font(.system(size: 60))
+                
+                TextField("Amount", text: $checkAmount)
+                    .foregroundStyle(.primary)
+                    .font(.system(size: 60))
+                    .keyboardType(.decimalPad)
+                    .focused($amountIsFocused)
+                
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Done") {
+                                amountIsFocused = false
+                            }
+                        }
                     }
-                }
             }
+            TitleView(title: "SPLIT BY:")
+            GuestCountView(guestCount: $numberOfPeople)
         }
+        .padding()
     }
 }
 
 #Preview {
     ContentView()
-        .preferredColorScheme(.dark)
+}
+
+struct TitleView: View {
+    
+    var title: String
+    
+    var body: some View {
+        HStack {
+            Text(title)
+//                .foregroundStyle(.cyan)
+            Spacer()
+        }
+    }
 }
