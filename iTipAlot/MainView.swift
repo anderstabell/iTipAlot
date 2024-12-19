@@ -26,13 +26,13 @@ struct MainView: View {
             }
             .pickerStyle(.segmented)
             
-            /// Header of `AmountView`
+            /// Title of `AmountView`
             TitleView(title: "BILL AMOUNT")
             
             /// Content of `AmountView`
             AmountView(vm: $vm)
             
-            /// Header of `GuestCountView`
+            /// Title of `GuestCountView`
             /// - seealso: ``GuestCountView``
             TitleView(title: "SPLIT BY:")
             GuestCountView(guestCount: $vm.numberOfPeople)
