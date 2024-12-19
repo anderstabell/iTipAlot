@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     
+    /// Properties for the card label
     var cardLabelText = ""
     var totalAmount = 0.0
     var subtotalAmount = 0.0
@@ -17,7 +18,7 @@ struct CardView: View {
     var body: some View {
         VStack(alignment: .leading) {
             
-            /// Text above the `RoundedRectangle`
+            /// Card label text above the `RoundedRectangle` (Per Person)
             ///- seealso: ``MainView``
             Text(cardLabelText)
                 .fontWeight(.black)
@@ -37,46 +38,45 @@ struct CardView: View {
         HStack {
             Spacer()
             
+            /// Text for the `totalAmount`
             Text("$ \(totalAmount, specifier: "%.2f")")
-                .foregroundStyle(.white)
                 .fontWeight(.bold)
                 .font(.title)
             
             Spacer()
             
+            /// The divider between the `totalAmount` and `subTotal / tip`
             Rectangle()
-                .foregroundStyle(.white)
                 .frame(width: 1, height: 90)
             
             Spacer()
             
+            /// This will show the `Subtotal` and `Tip`
             VStack(alignment: .leading, spacing: 10) {
                 VStack(alignment: .leading) {
                     Text("Subtotal")
-                        .foregroundStyle(.white)
                         .fontWeight(.bold)
                     
                     Text("$ \(subtotalAmount, specifier: "%.2f")")
-                        .foregroundStyle(.white)
                         .fontWeight(.bold)
                 }
                 
                 VStack(alignment: .leading) {
                     Text("Tip")
-                        .foregroundStyle(.white)
                         .fontWeight(.bold)
                     
                     Text("$ \(tipAmount, specifier: "%.2f")")
-                        .foregroundStyle(.white)
                         .fontWeight(.bold)
                 }
             }
             
             Spacer()
         }
+        .foregroundStyle(.white)
     }
 }
 
 #Preview {
-    CardView()
+    CardView(cardLabelText: "Per Person")
+        .frame(width: 350, height: 150)
 }
