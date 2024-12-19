@@ -11,8 +11,6 @@ struct MainView: View {
     
     @State private var vm = MainViewModel()
     
-    @FocusState private var amountIsFocused: Bool
-    
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
@@ -28,28 +26,14 @@ struct MainView: View {
             }
             .pickerStyle(.segmented)
             
+            /// Header of `AmountView`
             TitleView(title: "BILL AMOUNT")
             
-            HStack {
-                Text("$")
-                    .foregroundStyle(.primary)
-                    .font(.system(size: 60))
-                
-                TextField("Amount", text: $vm.checkAmount)
-                    .foregroundStyle(.primary)
-                    .font(.system(size: 60))
-                    .keyboardType(.decimalPad)
-                    .focused($amountIsFocused)
-                
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                amountIsFocused = false
-                            }
-                        }
-                    }
-            }
+            /// Content of `AmountView`
+            AmountView(vm: $vm)
+            
+            /// Header of `GuestCountView`
+            /// - seealso: ``GuestCountView``
             TitleView(title: "SPLIT BY:")
             GuestCountView(guestCount: $vm.numberOfPeople)
         }
@@ -69,6 +53,36 @@ struct TitleView: View {
         HStack {
             Text(title)
             Spacer()
+        }
+    }
+}
+
+struct AmountView: View {
+    
+    @Binding var vm: MainViewModel
+    
+    @FocusState private var amountIsFocused: Bool
+    
+    var body: some View {
+        HStack {
+            Text("$")
+                .foregroundStyle(.primary)
+                .font(.system(size: 60))
+            
+            TextField("Amount", text: $vm.checkAmount)
+                .foregroundStyle(.primary)
+                .font(.system(size: 60))
+                .keyboardType(.decimalPad)
+                .focused($amountIsFocused)
+            
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            amountIsFocused = false
+                        }
+                    }
+                }
         }
     }
 }

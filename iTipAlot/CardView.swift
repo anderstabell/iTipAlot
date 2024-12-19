@@ -16,54 +16,63 @@ struct CardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            
+            /// Text above the `RoundedRectangle`
+            ///- seealso: ``MainView``
             Text(cardLabelText)
                 .fontWeight(.black)
             
+            // Background for the card
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundStyle(.gray)
                 
-                HStack {
-                    Spacer()
-                    
-                    Text("$ \(totalAmount, specifier: "%.2f")")
+                // Content of the card
+                contentLayer
+            }
+        }
+    }
+    
+    var contentLayer: some View {
+        HStack {
+            Spacer()
+            
+            Text("$ \(totalAmount, specifier: "%.2f")")
+                .foregroundStyle(.white)
+                .fontWeight(.bold)
+                .font(.title)
+            
+            Spacer()
+            
+            Rectangle()
+                .foregroundStyle(.white)
+                .frame(width: 1, height: 90)
+            
+            Spacer()
+            
+            VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading) {
+                    Text("Subtotal")
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
-                        .font(.title)
                     
-                    Spacer()
-                    
-                    Rectangle()
+                    Text("$ \(subtotalAmount, specifier: "%.2f")")
                         .foregroundStyle(.white)
-                        .frame(width: 1, height: 90)
+                        .fontWeight(.bold)
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("Tip")
+                        .foregroundStyle(.white)
+                        .fontWeight(.bold)
                     
-                    Spacer()
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        VStack(alignment: .leading) {
-                            Text("Subtotal")
-                                .foregroundStyle(.white)
-                                .fontWeight(.bold)
-                            
-                            Text("$ \(subtotalAmount, specifier: "%.2f")")
-                                .foregroundStyle(.white)
-                                .fontWeight(.bold)
-                        }
-                        
-                        VStack(alignment: .leading) {
-                            Text("Tip")
-                                .foregroundStyle(.white)
-                                .fontWeight(.bold)
-                            
-                            Text("$ \(tipAmount, specifier: "%.2f")")
-                                .foregroundStyle(.white)
-                                .fontWeight(.bold)
-                        }
-                    }
-                    
-                    Spacer()
+                    Text("$ \(tipAmount, specifier: "%.2f")")
+                        .foregroundStyle(.white)
+                        .fontWeight(.bold)
                 }
             }
+            
+            Spacer()
         }
     }
 }
