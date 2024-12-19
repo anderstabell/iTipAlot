@@ -9,11 +9,15 @@ import Foundation
 import Observation
 
 @Observable final class MainViewModel {
+    
+    /// Properties for the ``CardView``
     var checkAmount = ""
     var numberOfPeople = 2
     var tipPercentage = 2
     
+    /// Tip amount that can be selected when doing the calculations
     let tipPercentages = [10, 15, 20, 25, 0]
+    
     
     var subTotal: Double { Double(checkAmount) ?? 0 }
     
