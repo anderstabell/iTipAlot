@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		760447602B581079008FDEFB /* iTipAlotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7604475F2B581079008FDEFB /* iTipAlotApp.swift */; };
-		760447622B581079008FDEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760447612B581079008FDEFB /* ContentView.swift */; };
+		760447622B581079008FDEFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760447612B581079008FDEFB /* MainView.swift */; };
 		760447642B58107A008FDEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447632B58107A008FDEFB /* Assets.xcassets */; };
 		760447672B58107A008FDEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447662B58107A008FDEFB /* Preview Assets.xcassets */; };
+		76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */; };
 		76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F1CF5C2D146F0C001DFA92 /* CardView.swift */; };
 		76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */; };
 /* End PBXBuildFile section */
@@ -18,9 +19,10 @@
 /* Begin PBXFileReference section */
 		7604475C2B581079008FDEFB /* iTipAlot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTipAlot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7604475F2B581079008FDEFB /* iTipAlotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTipAlotApp.swift; sourceTree = "<group>"; };
-		760447612B581079008FDEFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		760447612B581079008FDEFB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		760447632B58107A008FDEFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		760447662B58107A008FDEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		76F1CF5C2D146F0C001DFA92 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				7604475F2B581079008FDEFB /* iTipAlotApp.swift */,
-				760447612B581079008FDEFB /* ContentView.swift */,
+				760447612B581079008FDEFB /* MainView.swift */,
+				76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */,
 				76F1CF5C2D146F0C001DFA92 /* CardView.swift */,
 				76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */,
 				760447632B58107A008FDEFB /* Assets.xcassets */,
@@ -143,7 +146,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				760447622B581079008FDEFB /* ContentView.swift in Sources */,
+				76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */,
+				760447622B581079008FDEFB /* MainView.swift in Sources */,
 				76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */,
 				760447602B581079008FDEFB /* iTipAlotApp.swift in Sources */,
 				76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */,
