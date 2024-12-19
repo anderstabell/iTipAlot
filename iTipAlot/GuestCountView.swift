@@ -19,7 +19,6 @@ struct GuestCountView: View {
                 }
             } label: {
                 Image(systemName: "minus.circle")
-//                    .foregroundStyle(.cyan)
                     .font(.system(.title, design: .rounded))
             }
             
@@ -31,7 +30,6 @@ struct GuestCountView: View {
                 guestCount += 1
             } label: {
                 Image(systemName: "plus.circle")
-//                    .foregroundStyle(.cyan)
                     .font(.system(.title, design: .rounded))
             }
         }
