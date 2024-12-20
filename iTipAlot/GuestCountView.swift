@@ -18,8 +18,10 @@ struct GuestCountView: View {
                     guestCount -= 1
                 }
             } label: {
-                Image(systemName: "minus.circle")
+                Image(systemName: "hand.point.left")
                     .font(.system(.title, design: .rounded))
+                    .foregroundStyle(.gray)
+                    .bold()
             }
             
             Text("\(guestCount)")
@@ -29,8 +31,10 @@ struct GuestCountView: View {
             Button {
                 guestCount += 1
             } label: {
-                Image(systemName: "plus.circle")
+                Image(systemName: "hand.point.right")
                     .font(.system(.title, design: .rounded))
+                    .foregroundStyle(.gray)
+                    .bold()
             }
         }
     }
