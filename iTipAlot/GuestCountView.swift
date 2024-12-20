@@ -20,7 +20,7 @@ struct GuestCountView: View {
             } label: {
                 Image(systemName: "hand.point.left")
                     .font(.system(.title, design: .rounded))
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.white)
                     .bold()
             }
             
@@ -33,7 +33,7 @@ struct GuestCountView: View {
             } label: {
                 Image(systemName: "hand.point.right")
                     .font(.system(.title, design: .rounded))
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.white)
                     .bold()
             }
         }

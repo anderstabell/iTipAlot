@@ -26,7 +26,7 @@ struct CardView: View {
             // Background for the card
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.gray).opacity(0.5)
                 
                 // Content of the card
                 contentLayer
