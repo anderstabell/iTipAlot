@@ -65,9 +65,10 @@ struct AmountView: View {
     
     var body: some View {
         HStack {
-            Text("$")
+            Image(systemName: "dollarsign")
                 .foregroundStyle(.primary)
                 .font(.system(size: 60))
+                .bold()
             
             TextField("Amount", text: $vm.checkAmount)
                 .foregroundStyle(.primary)
