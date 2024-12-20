@@ -12,6 +12,7 @@ struct MainView: View {
     @State private var vm = MainViewModel()
     
     var body: some View {
+        
         VStack(alignment: .center, spacing: 20) {
             CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
                 .frame(maxWidth: .infinity)
@@ -62,7 +63,6 @@ struct TitleView: View {
 struct AmountView: View {
     
     @Binding var vm: MainViewModel
-    
     @FocusState private var amountIsFocused: Bool
     
     var body: some View {
