@@ -41,7 +41,7 @@ struct CardView: View {
             /// Text for the `totalAmount`
             Text("$ \(totalAmount, specifier: "%.2f")")
                 .fontWeight(.bold)
-                .font(.title)
+                .font(.system(size: 40))
             
             Spacer()
             
