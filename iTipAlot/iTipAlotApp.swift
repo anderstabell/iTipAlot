@@ -12,6 +12,7 @@ struct iTipAlotApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .preferredColorScheme(.dark)
         }
     }
 }

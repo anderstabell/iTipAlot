@@ -26,7 +26,7 @@ struct CardView: View {
             // Background for the card
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.gray).opacity(0.5)
                 
                 // Content of the card
                 contentLayer
@@ -41,7 +41,7 @@ struct CardView: View {
             /// Text for the `totalAmount`
             Text("$ \(totalAmount, specifier: "%.2f")")
                 .fontWeight(.bold)
-                .font(.title)
+                .font(.system(size: 40))
             
             Spacer()
             
