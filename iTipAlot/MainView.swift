@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State private var vm = MainViewModel() 
+    @State private var vm = MainViewModel()
     
     var body: some View {
         
