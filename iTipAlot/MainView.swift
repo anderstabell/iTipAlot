@@ -36,6 +36,7 @@ struct MainView: View {
             /// Title of `GuestCountView`
             /// - seealso: ``GuestCountView``
             TitleView(title: "SPLIT BY:")
+            
             GuestCountView(guestCount: $vm.numberOfPeople)
         }
         .background(Image("dollar").opacity(0.2))
