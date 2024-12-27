@@ -42,4 +42,5 @@ struct GuestCountView: View {
 
 #Preview {
     GuestCountView(guestCount: .constant(1))
+        .preferredColorScheme(.dark)
 }
