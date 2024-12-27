@@ -72,7 +72,6 @@ struct CardView: View {
             
             Spacer()
         }
-        .foregroundStyle(.white)
     }
 }
 
