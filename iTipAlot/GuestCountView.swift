@@ -18,7 +18,7 @@ struct GuestCountView: View {
                     guestCount -= 1
                 }
             } label: {
-                Image(systemName: "hand.point.left")
+                Image(systemName: "minus.circle")
                     .font(.system(.title, design: .rounded))
                     .foregroundStyle(.white)
                     .bold()
@@ -31,7 +31,7 @@ struct GuestCountView: View {
             Button {
                 guestCount += 1
             } label: {
-                Image(systemName: "hand.point.right")
+                Image(systemName: "plus.circle")
                     .font(.system(.title, design: .rounded))
                     .foregroundStyle(.white)
                     .bold()
@@ -42,4 +42,5 @@ struct GuestCountView: View {
 
 #Preview {
     GuestCountView(guestCount: .constant(1))
+        .preferredColorScheme(.dark)
 }
