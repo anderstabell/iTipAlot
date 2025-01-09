@@ -53,5 +53,4 @@ struct CardView: View {
 
 #Preview {
     CardView(cardLabelText: "Per Person")
-//        .frame(width: 350, height: 150)
 }
