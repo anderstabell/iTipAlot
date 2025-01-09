@@ -46,7 +46,7 @@ struct CardView: View {
                             .font(.headline)
                     }
                 }
-                    .padding(20)
+                    .padding(.horizontal)
             )
     }
 }
