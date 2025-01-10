@@ -11,7 +11,6 @@
 		760447622B581079008FDEFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760447612B581079008FDEFB /* MainView.swift */; };
 		760447642B58107A008FDEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447632B58107A008FDEFB /* Assets.xcassets */; };
 		760447672B58107A008FDEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447662B58107A008FDEFB /* Preview Assets.xcassets */; };
-		763A874D2D3174B600BD760B /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763A874C2D3174B600BD760B /* WatchConnectivity.framework */; };
 		767247B42D2DBE6000DA9335 /* iTipAlotWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 767247A72D2DBE5F00DA9335 /* iTipAlotWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		767247BA2D2DC1ED00DA9335 /* iOSConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767247B92D2DC1ED00DA9335 /* iOSConnectivity.swift */; };
 		76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */; };
@@ -73,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				763A874D2D3174B600BD760B /* WatchConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
