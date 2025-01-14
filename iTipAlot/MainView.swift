@@ -13,7 +13,7 @@ struct MainView: View {
     
     var body: some View {
         
-        VStack(alignment: .center, spacing: 20) {
+        VStack {
             CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
             
             CardView(cardLabelText: "TOTAL", totalAmount: vm.totalAmountWithTip, subtotalAmount: vm.subTotal, tipAmount: vm.tipValue)
@@ -59,32 +59,3 @@ struct TitleView: View {
     }
 }
 
-struct AmountView: View {
-    
-    @Binding var vm: MainViewModel
-    @FocusState private var amountIsFocused: Bool
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "dollarsign")
-                .foregroundStyle(.primary)
-                .font(.system(size: 60))
-                .bold()
-            
-            TextField("How much?", text: $vm.checkAmount)
-                .foregroundStyle(.primary)
-                .font(.system(size: 50))
-                .keyboardType(.decimalPad)
-                .focused($amountIsFocused)
-            
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            amountIsFocused = false
-                        }
-                    }
-                }
-        }
-    }
-}
