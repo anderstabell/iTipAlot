@@ -28,7 +28,7 @@ struct MainView: View {
             /// Title of `AmountView`
             TitleView(title: "BILL AMOUNT")
             
-            /// Content of `AmountView`
+            /// Content of ``AmountView``
             AmountView(vm: $vm)
             
             /// Title of `GuestCountView`
