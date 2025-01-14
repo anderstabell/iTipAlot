@@ -16,66 +16,41 @@ struct CardView: View {
     var tipAmount = 0.0
     
     var body: some View {
-        VStack(alignment: .leading) {
-            
-            /// Card label text above the `RoundedRectangle` (Per Person)
-            ///- seealso: ``MainView``
-            Text(cardLabelText)
-                .fontWeight(.black)
-            
-            // Background for the card
-            ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundStyle(.gray).opacity(0.5)
-                
-                // Content of the card
-                contentLayer
-            }
-        }
-    }
-    
-    var contentLayer: some View {
-        HStack {
-            Spacer()
-            
-            /// Text for the `totalAmount`
-            Text("$ \(totalAmount, specifier: "%.2f")")
-                .fontWeight(.bold)
-                .font(.system(size: 40))
-            
-            Spacer()
-            
-            /// The divider between the `totalAmount` and `subTotal / tip`
-            Rectangle()
-                .frame(width: 1, height: 90)
-            
-            Spacer()
-            
-            /// This will show the `Subtotal` and `Tip`
-            VStack(alignment: .leading, spacing: 10) {
-                VStack(alignment: .leading) {
-                    Text("Subtotal")
-                        .fontWeight(.bold)
+        RoundedRectangle(cornerRadius: 15)
+            .fill(Color.gray.opacity(0.3))
+            .overlay(
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(cardLabelText)
+                        .font(.title2)
+                        .bold()
                     
-                    Text("$ \(subtotalAmount, specifier: "%.2f")")
-                        .fontWeight(.bold)
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("Tip")
-                        .fontWeight(.bold)
+                    HStack{
+                        Text("Subtotal:")
+                        Spacer()
+                        Text(String(format: "$%.2f", subtotalAmount))
+                    }
+                    HStack{
+                        Text("Tip:")
+                        Spacer()
+                        Text(String(format: "$%.2f", tipAmount))
+                    }
+                    Rectangle()
+                        .frame(height: 1)
+                        .frame(maxWidth: .infinity)
                     
-                    Text("$ \(tipAmount, specifier: "%.2f")")
-                        .fontWeight(.bold)
+                    HStack{
+                        Text("Total:")
+                            .font(.headline)
+                        Spacer()
+                        Text(String(format: "$%.2f", totalAmount))
+                            .font(.headline)
+                    }
                 }
-            }
-            
-            Spacer()
-        }
+                    .padding(.horizontal)
+            )
     }
 }
 
 #Preview {
     CardView(cardLabelText: "Per Person")
-        .frame(width: 350, height: 150)
 }

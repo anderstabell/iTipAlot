@@ -16,6 +16,19 @@
 		76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		767247B52D2DBE6000DA9335 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7604475C2B581079008FDEFB /* iTipAlot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTipAlot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7604475F2B581079008FDEFB /* iTipAlotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTipAlotApp.swift; sourceTree = "<group>"; };
@@ -42,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				7604475E2B581079008FDEFB /* iTipAlot */,
+				763A874B2D3174B500BD760B /* Frameworks */,
 				7604475D2B581079008FDEFB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +90,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		763A874B2D3174B500BD760B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,6 +107,7 @@
 				760447582B581079008FDEFB /* Sources */,
 				760447592B581079008FDEFB /* Frameworks */,
 				7604475A2B581079008FDEFB /* Resources */,
+				767247B52D2DBE6000DA9335 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -103,7 +125,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					7604475B2B581079008FDEFB = {

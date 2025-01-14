@@ -6,8 +6,23 @@
 	<dict>
 		<key>iTipAlot.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>7604475B2B581079008FDEFB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>767247A62D2DBE5F00DA9335</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

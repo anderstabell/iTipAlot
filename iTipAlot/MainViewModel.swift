@@ -8,9 +8,9 @@
 import Foundation
 import Observation
 
+/// Overall calculations for the three ``CardView`` properties
 @Observable final class MainViewModel {
     
-    /// Overall calculations for the three ``CardView`` properties
     /// Properties for calculating the check
     var checkAmount = ""
     var numberOfPeople = 2
