@@ -15,10 +15,8 @@ struct MainView: View {
         
         VStack(alignment: .center, spacing: 20) {
             CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
-                .frame(maxWidth: .infinity)
             
             CardView(cardLabelText: "TOTAL", totalAmount: vm.totalAmountWithTip, subtotalAmount: vm.subTotal, tipAmount: vm.tipValue)
-                .frame(maxWidth: .infinity)
             
             Picker("Tip Percentage", selection: $vm.tipPercentage) {
                 ForEach(0..<vm.tipPercentages.count, id: \.self) {
