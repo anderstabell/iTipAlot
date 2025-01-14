@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MainView: View { 
     
     @State private var vm = MainViewModel()
     
