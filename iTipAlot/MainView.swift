@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     
     @State private var vm = MainViewModel()
-    let connectivity = iOSConnectivity.shared
     
     var body: some View {
         

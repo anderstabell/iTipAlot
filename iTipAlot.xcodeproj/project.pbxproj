@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,22 +11,10 @@
 		760447622B581079008FDEFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760447612B581079008FDEFB /* MainView.swift */; };
 		760447642B58107A008FDEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447632B58107A008FDEFB /* Assets.xcassets */; };
 		760447672B58107A008FDEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447662B58107A008FDEFB /* Preview Assets.xcassets */; };
-		767247B42D2DBE6000DA9335 /* iTipAlotWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 767247A72D2DBE5F00DA9335 /* iTipAlotWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		767247BA2D2DC1ED00DA9335 /* iOSConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767247B92D2DC1ED00DA9335 /* iOSConnectivity.swift */; };
 		76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */; };
 		76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F1CF5C2D146F0C001DFA92 /* CardView.swift */; };
 		76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		767247B22D2DBE6000DA9335 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 760447542B581079008FDEFB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 767247A62D2DBE5F00DA9335;
-			remoteInfo = "iTipAlotWatch Watch App";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		767247B52D2DBE6000DA9335 /* Embed Watch Content */ = {
@@ -35,7 +23,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				767247B42D2DBE6000DA9335 /* iTipAlotWatch Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,27 +35,13 @@
 		760447612B581079008FDEFB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		760447632B58107A008FDEFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		760447662B58107A008FDEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		763A874C2D3174B600BD760B /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
-		767247A72D2DBE5F00DA9335 /* iTipAlotWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iTipAlotWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		767247B92D2DC1ED00DA9335 /* iOSConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSConnectivity.swift; sourceTree = "<group>"; };
 		76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		76F1CF5C2D146F0C001DFA92 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		767247A82D2DBE5F00DA9335 /* iTipAlotWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "iTipAlotWatch Watch App"; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		760447592B581079008FDEFB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		767247A42D2DBE5F00DA9335 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -82,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				7604475E2B581079008FDEFB /* iTipAlot */,
-				767247A82D2DBE5F00DA9335 /* iTipAlotWatch Watch App */,
 				763A874B2D3174B500BD760B /* Frameworks */,
 				7604475D2B581079008FDEFB /* Products */,
 			);
@@ -92,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				7604475C2B581079008FDEFB /* iTipAlot.app */,
-				767247A72D2DBE5F00DA9335 /* iTipAlotWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,7 +73,6 @@
 			children = (
 				7604475F2B581079008FDEFB /* iTipAlotApp.swift */,
 				760447612B581079008FDEFB /* MainView.swift */,
-				767247B92D2DC1ED00DA9335 /* iOSConnectivity.swift */,
 				76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */,
 				76F1CF5C2D146F0C001DFA92 /* CardView.swift */,
 				76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */,
@@ -123,7 +93,6 @@
 		763A874B2D3174B500BD760B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				763A874C2D3174B600BD760B /* WatchConnectivity.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,33 +112,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				767247B32D2DBE6000DA9335 /* PBXTargetDependency */,
 			);
 			name = iTipAlot;
 			productName = iTipAlot;
 			productReference = 7604475C2B581079008FDEFB /* iTipAlot.app */;
-			productType = "com.apple.product-type.application";
-		};
-		767247A62D2DBE5F00DA9335 /* iTipAlotWatch Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 767247B82D2DBE6000DA9335 /* Build configuration list for PBXNativeTarget "iTipAlotWatch Watch App" */;
-			buildPhases = (
-				767247A32D2DBE5F00DA9335 /* Sources */,
-				767247A42D2DBE5F00DA9335 /* Frameworks */,
-				767247A52D2DBE5F00DA9335 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				767247A82D2DBE5F00DA9335 /* iTipAlotWatch Watch App */,
-			);
-			name = "iTipAlotWatch Watch App";
-			packageProductDependencies = (
-			);
-			productName = "iTipAlotWatch Watch App";
-			productReference = 767247A72D2DBE5F00DA9335 /* iTipAlotWatch Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,9 +130,6 @@
 				TargetAttributes = {
 					7604475B2B581079008FDEFB = {
 						CreatedOnToolsVersion = 15.2;
-					};
-					767247A62D2DBE5F00DA9335 = {
-						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -204,7 +147,6 @@
 			projectRoot = "";
 			targets = (
 				7604475B2B581079008FDEFB /* iTipAlot */,
-				767247A62D2DBE5F00DA9335 /* iTipAlotWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -219,13 +161,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		767247A52D2DBE5F00DA9335 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -235,29 +170,13 @@
 			files = (
 				76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */,
 				760447622B581079008FDEFB /* MainView.swift in Sources */,
-				767247BA2D2DC1ED00DA9335 /* iOSConnectivity.swift in Sources */,
 				76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */,
 				760447602B581079008FDEFB /* iTipAlotApp.swift in Sources */,
 				76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		767247A32D2DBE5F00DA9335 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		767247B32D2DBE6000DA9335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 767247A62D2DBE5F00DA9335 /* iTipAlotWatch Watch App */;
-			targetProxy = 767247B22D2DBE6000DA9335 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		760447682B58107A008FDEFB /* Debug */ = {
@@ -451,66 +370,6 @@
 			};
 			name = Release;
 		};
-		767247B62D2DBE6000DA9335 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iTipAlotWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 54F76XRMYB;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = iTipAlotWatch;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = anderstabell.iTipAlot;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = anderstabell.iTipAlot.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.2;
-			};
-			name = Debug;
-		};
-		767247B72D2DBE6000DA9335 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iTipAlotWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 54F76XRMYB;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = iTipAlotWatch;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = anderstabell.iTipAlot;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = anderstabell.iTipAlot.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.2;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -528,15 +387,6 @@
 			buildConfigurations = (
 				7604476B2B58107A008FDEFB /* Debug */,
 				7604476C2B58107A008FDEFB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		767247B82D2DBE6000DA9335 /* Build configuration list for PBXNativeTarget "iTipAlotWatch Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				767247B62D2DBE6000DA9335 /* Debug */,
-				767247B72D2DBE6000DA9335 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
