@@ -15,12 +15,12 @@ struct AmountView: View {
         HStack {
             Image(systemName: "dollarsign")
                 .foregroundStyle(.primary)
-                .font(.system(size: 60))
+                .font(.system(size: 40))
                 .bold()
             
             TextField("How much?", text: $vm.checkAmount)
                 .foregroundStyle(.primary)
-                .font(.system(size: 50))
+                .font(.system(size: 40))
                 .keyboardType(.decimalPad)
                 .focused($amountIsFocused)
             
