@@ -16,6 +16,7 @@ struct MainView: View {
         NavigationStack {
             ScrollView {
                 CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
+                    .padding(.bottom)
                 
                 CardView(cardLabelText: "TOTAL", totalAmount: vm.totalAmountWithTip, subtotalAmount: vm.subTotal, tipAmount: vm.tipValue)
                     .padding(.bottom)
