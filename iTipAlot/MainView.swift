@@ -13,32 +13,37 @@ struct MainView: View {
     
     var body: some View {
         
-        VStack {
-            CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
-            
-            CardView(cardLabelText: "TOTAL", totalAmount: vm.totalAmountWithTip, subtotalAmount: vm.subTotal, tipAmount: vm.tipValue)
-            
-            Picker("Tip Percentage", selection: $vm.tipPercentage) {
-                ForEach(0..<vm.tipPercentages.count, id: \.self) {
-                    Text("\(vm.tipPercentages[$0])%")
+        NavigationStack {
+            ScrollView {
+                CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
+                
+                CardView(cardLabelText: "TOTAL", totalAmount: vm.totalAmountWithTip, subtotalAmount: vm.subTotal, tipAmount: vm.tipValue)
+                    .padding(.bottom)
+                
+                Picker("Tip Percentage", selection: $vm.tipPercentage) {
+                    ForEach(0..<vm.tipPercentages.count, id: \.self) {
+                        Text("\(vm.tipPercentages[$0])%")
+                    }
                 }
+                .pickerStyle(.segmented)
+                .padding(.bottom)
+                
+                /// Title of `AmountView`
+                TitleView(title: "BILL AMOUNT")
+                
+                /// Content of ``AmountView``
+                AmountView(vm: $vm)
+                
+                /// Title of `GuestCountView`
+                /// - seealso: ``GuestCountView``
+                TitleView(title: "SPLIT BY:")
+                
+                GuestCountView(guestCount: $vm.numberOfPeople)
             }
-            .pickerStyle(.segmented)
-            
-            /// Title of `AmountView`
-            TitleView(title: "BILL AMOUNT")
-            
-            /// Content of ``AmountView``
-            AmountView(vm: $vm)
-            
-            /// Title of `GuestCountView`
-            /// - seealso: ``GuestCountView``
-            TitleView(title: "SPLIT BY:")
-            
-            GuestCountView(guestCount: $vm.numberOfPeople)
+            .padding()
+            .navigationTitle("We like to tip 🤑")
+            .background(Image("dollar").opacity(0.2))
         }
-        .background(Image("dollar").opacity(0.2))
-        .padding()
     }
 }
 

@@ -16,38 +16,31 @@ struct CardView: View {
     var tipAmount = 0.0
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 15)
-            .fill(Color.gray.opacity(0.3))
-            .overlay(
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(cardLabelText)
-                        .font(.title2)
-                        .bold()
-                    
-                    HStack{
-                        Text("Subtotal:")
-                        Spacer()
-                        Text(String(format: "$%.2f", subtotalAmount))
-                    }
-                    HStack{
-                        Text("Tip:")
-                        Spacer()
-                        Text(String(format: "$%.2f", tipAmount))
-                    }
-                    Rectangle()
-                        .frame(height: 1)
-                        .frame(maxWidth: .infinity)
-                    
-                    HStack{
-                        Text("Total:")
-                            .font(.headline)
-                        Spacer()
-                        Text(String(format: "$%.2f", totalAmount))
-                            .font(.headline)
-                    }
-                }
-                    .padding(.horizontal)
-            )
+        
+        GroupBox(cardLabelText) {
+            HStack{
+                Text("Subtotal:")
+                Spacer()
+                Text(String(format: "$%.2f", subtotalAmount))
+            }
+            HStack{
+                Text("Tip:")
+                Spacer()
+                Text(String(format: "$%.2f", tipAmount))
+            }
+            Rectangle()
+                .frame(height: 1)
+                .frame(maxWidth: .infinity)
+            
+            HStack{
+                Text("Total:")
+                    .bold()
+                Spacer()
+                Text(String(format: "$%.2f", totalAmount))
+                    .bold()
+            }
+        }
+        .backgroundStyle(.gray.opacity(0.3))
     }
 }
 
