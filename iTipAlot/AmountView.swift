@@ -35,3 +35,6 @@ struct AmountView: View {
         }
     }
 }
+#Preview {
+    AmountView(vm: .constant(MainViewModel()))
+}
