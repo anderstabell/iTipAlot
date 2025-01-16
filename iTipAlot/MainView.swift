@@ -29,7 +29,7 @@ struct MainView: View {
                 .padding(.bottom)
                 
                 /// Title of `AmountView`
-                TitleView(title: "BILL AMOUNT")
+                TitleView(title: "CHECK AMOUNT")
                 
                 /// Content of ``AmountView``
                 AmountView(vm: $vm)
