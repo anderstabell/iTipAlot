@@ -8,7 +8,7 @@ import SwiftUI
 
 struct AmountView: View {
     
-    @Binding var vm: MainViewModel
+    @Binding var viewModel: MainViewModel
     @FocusState private var amountIsFocused: Bool
     
     var body: some View {
@@ -18,7 +18,7 @@ struct AmountView: View {
                 .font(.system(size: 40))
                 .bold()
             
-            TextField("How much?", text: $vm.checkAmount)
+            TextField("How much?", text: $viewModel.checkAmount)
                 .foregroundStyle(.primary)
                 .font(.system(size: 40))
                 .keyboardType(.decimalPad)
@@ -36,5 +36,5 @@ struct AmountView: View {
     }
 }
 #Preview {
-    AmountView(vm: .constant(MainViewModel()))
+    AmountView(viewModel: .constant(MainViewModel()))
 }
