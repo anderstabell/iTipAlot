@@ -18,27 +18,23 @@ struct CardView: View {
     var body: some View {
         
         GroupBox(cardLabelText) {
-            HStack{
-                Text("Subtotal:")
-                Spacer()
-                Text(String(format: "$%.2f", subtotalAmount))
-            }
-            HStack{
-                Text("Tip:")
-                Spacer()
-                Text(String(format: "$%.2f", tipAmount))
-            }
-            Rectangle()
-                .frame(height: 1)
-                .frame(maxWidth: .infinity)
+            LabeledContent(
+                "Subtotal",
+                value: subtotalAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+            .foregroundStyle(.primary)
             
-            HStack{
-                Text("Total:")
-                    .bold()
-                Spacer()
-                Text(String(format: "$%.2f", totalAmount))
-                    .bold()
-            }
+            LabeledContent(
+                "Tip",
+                value: tipAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+            .foregroundStyle(.primary)
+            
+            Divider()
+                .overlay(Color.primary)
+            
+            LabeledContent(
+                "Total",
+                value: totalAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+            .foregroundStyle(.primary)
         }
         .backgroundStyle(.gray.opacity(0.3))
     }
