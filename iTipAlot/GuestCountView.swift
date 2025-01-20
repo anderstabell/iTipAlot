@@ -12,26 +12,26 @@ struct GuestCountView: View {
     @Binding var guestCount: Int
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack {
             Button {
                 if guestCount > 1 {
                     guestCount -= 1
                 }
             } label: {
-                Image(systemName: "minus.circle")
+                Image(systemName: "arrow.left.circle")
                     .font(.system(.title, design: .rounded))
                     .foregroundStyle(.white)
                     .bold()
             }
             
             Text("\(guestCount)")
-                .foregroundStyle(.primary)
                 .font(.system(size: 40, weight: .black, design: .monospaced))
+                .padding()
             
             Button {
                 guestCount += 1
             } label: {
-                Image(systemName: "plus.circle")
+                Image(systemName: "arrow.right.circle")
                     .font(.system(.title, design: .rounded))
                     .foregroundStyle(.white)
                     .bold()

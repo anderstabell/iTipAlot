@@ -9,38 +9,44 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State private var vm = MainViewModel()
+    @State private var viewModel = MainViewModel()
     
     var body: some View {
         
-        VStack(alignment: .center, spacing: 20) {
-            CardView(cardLabelText: "PER PERSON", totalAmount: vm.totalPerPerson, subtotalAmount: vm.subTotalPerPerson, tipAmount: vm.tipValuePerPerson)
-                .frame(maxWidth: .infinity)
-            
-            CardView(cardLabelText: "TOTAL", totalAmount: vm.totalAmountWithTip, subtotalAmount: vm.subTotal, tipAmount: vm.tipValue)
-                .frame(maxWidth: .infinity)
-            
-            Picker("Tip Percentage", selection: $vm.tipPercentage) {
-                ForEach(0..<vm.tipPercentages.count, id: \.self) {
-                    Text("\(vm.tipPercentages[$0])%")
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
+                        .padding(.bottom)
+                    
+                    CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
+                        .padding(.bottom)
+                    
+                    Picker("Tip Percentage", selection: $viewModel.tipPercentage) {
+                        ForEach(0..<viewModel.tipPercentages.count, id: \.self) {
+                            Text("\(viewModel.tipPercentages[$0])%")
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.bottom)
+                    
+                    /// Title of `AmountView`
+                    TitleView(title: "CHECK AMOUNT")
+                    
+                    /// Content of ``AmountView``
+                    AmountView(viewModel: $viewModel)
+                    
+                    /// Title of `GuestCountView`
+                    /// - seealso: ``GuestCountView``
+                    TitleView(title: "SPLIT BY:")
+                    
+                    GuestCountView(guestCount: $viewModel.numberOfPeople)
                 }
+                .navigationTitle("We Like To Tip")
+                .padding()
+                .background(Image("dollar").opacity(0.2))
             }
-            .pickerStyle(.segmented)
-            
-            /// Title of `AmountView`
-            TitleView(title: "BILL AMOUNT")
-            
-            /// Content of `AmountView`
-            AmountView(vm: $vm)
-            
-            /// Title of `GuestCountView`
-            /// - seealso: ``GuestCountView``
-            TitleView(title: "SPLIT BY:")
-            
-            GuestCountView(guestCount: $vm.numberOfPeople)
         }
-        .background(Image("dollar").opacity(0.2))
-        .padding()
     }
 }
 
@@ -61,32 +67,3 @@ struct TitleView: View {
     }
 }
 
-struct AmountView: View {
-    
-    @Binding var vm: MainViewModel
-    @FocusState private var amountIsFocused: Bool
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "dollarsign")
-                .foregroundStyle(.primary)
-                .font(.system(size: 60))
-                .bold()
-            
-            TextField("How much?", text: $vm.checkAmount)
-                .foregroundStyle(.primary)
-                .font(.system(size: 50))
-                .keyboardType(.decimalPad)
-                .focused($amountIsFocused)
-            
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            amountIsFocused = false
-                        }
-                    }
-                }
-        }
-    }
-}
