@@ -42,7 +42,6 @@ struct MainView: View {
                 GuestCountView(guestCount: $vm.numberOfPeople)
             }
             .padding()
-            .navigationTitle("We like to tip!")
             .background(Image("dollar").opacity(0.2))
         }
     }
