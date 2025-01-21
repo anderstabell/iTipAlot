@@ -1,6 +1,10 @@
 # Tips
 ## Anders Tabell
 ### Tips computes the tip and total amount for a bill. The app uses the base amount and tip percentage to calculate the amount owed.
+# Features
+- Enter the bill amount.
+- Select a tip percentage (e.g., 15%, 20%, 25%).
+- Automatically calculates the sub total and tip amount per person, and total check.
 # Screenshots / video
 
 <img src="https://github.com/user-attachments/assets/8181b3a2-1adc-4393-86fb-82237fdf314a" width="200">
