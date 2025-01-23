@@ -23,38 +23,13 @@ struct MainView: View {
                     CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
                         .padding(.bottom)
                     
-                    Picker("Tip Option", selection: $viewModel.tipOption) {
-                        Text("Percentage").tag(TipOption.percentage)
-                        Text("Custom $ Tip").tag(TipOption.customAmount)
-                    }
-                    .pickerStyle(.segmented)
-                    .padding(.bottom)
-                    
-                    /// This will give you the option between percentage, and custom dollar amount
-                    /// - seealso: ``TipOption``
-                    if viewModel.tipOption == .percentage {
-                        Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
-                            .tint(.secondary)
-                        Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
-                            .padding(.bottom)
-                    } else {
-                        HStack {
-                            Image(systemName: "dollarsign")
-                                .foregroundStyle(.primary)
-                                .font(.system(size: 30))
-                                .bold()
-                            TextField("Custom Tip Amount", value: $viewModel.customTipAmount, format: .number)
-                                .keyboardType(.decimalPad)
-                                .textFieldStyle(.roundedBorder)
-                                .opacity(0.5)
-                                .focused($customTipFocused)
-                                .onSubmit {
-                                    customTipFocused = false
-                                }
-                        }
+                    TipOptionPickerView(tipOption: $viewModel.tipOption)
                         .padding(.bottom)
-                    }
                     
+                    TipSelectionView(viewModel: $viewModel, customTipFocused: _customTipFocused)
+                        .padding(.bottom)
+                        .pickerStyle(.segmented)
+                                        
                     Section(header: TitleView(title: "CHECK AMOUNT:")) {
                         AmountView(viewModel: $viewModel, amountIsFocused: _amountIsFocused)
                     }
@@ -63,7 +38,6 @@ struct MainView: View {
                         GuestCountView(guestCount: $viewModel.numberOfPeople)
                     }
                 }
-                .navigationTitle("We Like To Tip")
                 .padding()
                 .background(Image("dollar").opacity(0.2))
                 .toolbar {
