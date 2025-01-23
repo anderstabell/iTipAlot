@@ -32,6 +32,7 @@ struct MainView: View {
 
                     if viewModel.tipOption == .percentage {
                         Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
+                            .tint(.secondary)
                         Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
                             .padding(.bottom)
                     } else {
