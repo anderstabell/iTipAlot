@@ -18,17 +18,14 @@ struct MainView: View {
             ScrollView {
                 VStack {
                     CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
-                        .padding(.bottom)
                     
                     CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
-                        .padding(.bottom)
                     
                     TipOptionPickerView(tipOption: $viewModel.tipOption)
-                        .padding(.bottom)
                     
                     TipSelectionView(viewModel: $viewModel, customTipFocused: _customTipFocused)
-                        .padding(.bottom)
                         .pickerStyle(.segmented)
+                        .padding(.bottom)
                                         
                     Section(header: TitleView(title: "CHECK AMOUNT:")) {
                         AmountView(viewModel: $viewModel, amountIsFocused: _amountIsFocused)

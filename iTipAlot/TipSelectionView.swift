@@ -35,7 +35,6 @@ struct TipSelectionView: View {
                         customTipFocused = false
                     }
             }
-            .padding(.bottom)
         }
     }
 }

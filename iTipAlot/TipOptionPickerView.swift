@@ -17,6 +17,7 @@ struct TipOptionPickerView: View {
             Text("Custom $ Tip").tag(TipOption.customAmount)
         }
         .pickerStyle(.segmented)
+        .padding(.bottom)
     }
 }
 
