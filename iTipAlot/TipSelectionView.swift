@@ -13,8 +13,7 @@ struct TipSelectionView: View {
     @FocusState var customTipFocused: Bool
     
     var body: some View {
-        /// This will give you the option between percentage, and custom dollar amount
-        /// - seealso: ``TipOption``
+        /// This will give you the ``TipOption`` between percentage, and custom dollar amount
         if viewModel.tipOption == .percentage {
             Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
                 .tint(.secondary)
@@ -24,7 +23,7 @@ struct TipSelectionView: View {
             HStack {
                 Image(systemName: "dollarsign")
                     .foregroundStyle(.primary)
-                    .font(.system(size: 30))
+                    .font(.system(size: 20))
                     .bold()
                 TextField("Custom $ Tip", value: $viewModel.customTipAmount, format: .number)
                     .keyboardType(.decimalPad)
