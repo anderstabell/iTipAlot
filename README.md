@@ -3,7 +3,8 @@
 ### Tips computes the tip and total amount for a bill. The app uses the base amount and tip percentage to calculate the amount owed.
 # Features
 - Enter the bill amount.
-- Select a tip percentage (e.g., 15%, 20%, 25%).
+- Select a tip percentage between 0 and 100.
+- Select custom tip by putting in dollar amout.
 - Automatically calculates the sub total and tip amount per person, and total check.
 # Screenshots / video
 
