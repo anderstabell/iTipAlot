@@ -21,12 +21,10 @@ struct CardView: View {
             LabeledContent(
                 "Subtotal",
                 value: subtotalAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
-            .foregroundStyle(.primary)
             
             LabeledContent(
                 "Tip",
                 value: tipAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
-            .foregroundStyle(.primary)
             
             Divider()
                 .overlay(Color.primary)
@@ -34,8 +32,8 @@ struct CardView: View {
             LabeledContent(
                 "Total",
                 value: totalAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
-            .foregroundStyle(.primary)
         }
+        .foregroundStyle(.primary)
         .backgroundStyle(.gray.opacity(0.3))
     }
 }

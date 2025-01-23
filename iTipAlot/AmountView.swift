@@ -7,31 +7,22 @@
 import SwiftUI
 
 struct AmountView: View {
-    
+
     @Binding var viewModel: MainViewModel
-    @FocusState private var amountIsFocused: Bool
-    
+    @FocusState var amountIsFocused: Bool // Take FocusState as a parameter
+
     var body: some View {
         HStack {
             Image(systemName: "dollarsign")
                 .foregroundStyle(.primary)
                 .font(.system(size: 40))
                 .bold()
-            
+
             TextField("How much?", text: $viewModel.checkAmount)
                 .foregroundStyle(.primary)
                 .font(.system(size: 40))
                 .keyboardType(.decimalPad)
                 .focused($amountIsFocused)
-            
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            amountIsFocused = false
-                        }
-                    }
-                }
         }
     }
 }
