@@ -18,52 +18,25 @@ struct MainView: View {
             ScrollView {
                 VStack {
                     CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
-                        .padding(.bottom)
                     
                     CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
+                    
+                    TipOptionPickerView(tipOption: $viewModel.tipOption)
+                    
+                    TipSelectionView(viewModel: $viewModel, customTipFocused: _customTipFocused)
                         .padding(.bottom)
-                    
-                    Picker("Tip Option", selection: $viewModel.tipOption) {
-                        Text("Percentage").tag(TipOption.percentage)
-                        Text("Custom $ Tip").tag(TipOption.customAmount)
-                    }
-                    .pickerStyle(.segmented)
-                    .padding(.bottom)
-                    
-                    /// This will give you the option between percentage, and custom dollar amount
-                    /// - seealso: ``TipOption``
-                    if viewModel.tipOption == .percentage {
-                        Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
-                            .tint(.secondary)
-                        Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
-                            .padding(.bottom)
-                    } else {
-                        HStack {
-                            Image(systemName: "dollarsign")
-                                .foregroundStyle(.primary)
-                                .font(.system(size: 30))
-                                .bold()
-                            TextField("Custom Tip Amount", value: $viewModel.customTipAmount, format: .number)
-                                .keyboardType(.decimalPad)
-                                .textFieldStyle(.roundedBorder)
-                                .opacity(0.5)
-                                .focused($customTipFocused)
-                                .onSubmit {
-                                    customTipFocused = false
-                                }
-                        }
-                        .padding(.bottom)
-                    }
-                    
+                                        
                     Section(header: TitleView(title: "CHECK AMOUNT:")) {
                         AmountView(viewModel: $viewModel, amountIsFocused: _amountIsFocused)
                     }
+                    .padding(.bottom)
                     
                     Section(header: TitleView(title: "SPLIT BY:")) {
                         GuestCountView(guestCount: $viewModel.numberOfPeople)
                     }
                 }
                 .navigationTitle("We Like To Tip")
+                .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .background(Image("dollar").opacity(0.2))
                 .toolbar {

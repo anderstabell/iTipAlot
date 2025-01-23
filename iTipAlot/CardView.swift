@@ -33,6 +33,7 @@ struct CardView: View {
                 "Total",
                 value: totalAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
         }
+        .padding(.bottom)
         .foregroundStyle(.primary)
         .backgroundStyle(.gray.opacity(0.3))
     }
