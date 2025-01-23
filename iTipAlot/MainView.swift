@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  iTipAlot
 //
 //  Created by Anders Tabell on 1/17/24.
