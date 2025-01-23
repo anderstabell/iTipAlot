@@ -29,6 +29,7 @@ struct MainView: View {
                     Section(header: TitleView(title: "CHECK AMOUNT:")) {
                         AmountView(viewModel: $viewModel, amountIsFocused: _amountIsFocused)
                     }
+                    .padding(.bottom)
                     
                     Section(header: TitleView(title: "SPLIT BY:")) {
                         GuestCountView(guestCount: $viewModel.numberOfPeople)
