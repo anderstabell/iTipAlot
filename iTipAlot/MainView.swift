@@ -30,6 +30,8 @@ struct MainView: View {
                     .pickerStyle(.segmented)
                     .padding(.bottom)
 
+                    /// This will give you the option between percentage, and custom dollar amount
+                    /// - seealso: ``TipOption``
                     if viewModel.tipOption == .percentage {
                         Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
                             .tint(.secondary)

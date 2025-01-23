@@ -9,7 +9,9 @@ import SwiftUI
 struct AmountView: View {
 
     @Binding var viewModel: MainViewModel
-    @FocusState var amountIsFocused: Bool // Take FocusState as a parameter
+    
+    // Take FocusState as a parameter
+    @FocusState var amountIsFocused: Bool
 
     var body: some View {
         HStack {
