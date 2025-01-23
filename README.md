@@ -8,9 +8,9 @@
 - Automatically calculates the sub total and tip amount per person, and total check.
 # Screenshots / video
 
-<img src="https://github.com/user-attachments/assets/8181b3a2-1adc-4393-86fb-82237fdf314a" width="200">
-<img src="https://github.com/user-attachments/assets/4dc7dd24-2117-419a-a461-27d93a99dad4" width="200">
-<img src="https://github.com/user-attachments/assets/4f83d7fd-87a6-44cd-8f3e-3b33726a55bb" width="200">
+<img src="https://github.com/user-attachments/assets/93c723e6-0426-4068-b458-9a2cfa3327b3" width="200">
+<img src="https://github.com/user-attachments/assets/f89450a9-633d-46a3-8fa9-6f9787fb9df8" width="200">
+<img src="https://github.com/user-attachments/assets/e548ae2e-ea51-42df-8b50-801753391c19" width="200">
 
 
 https://github.com/user-attachments/assets/0cda7d44-b9f1-451f-be6d-8915578b4640
