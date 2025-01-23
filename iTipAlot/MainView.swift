@@ -24,7 +24,6 @@ struct MainView: View {
                     TipOptionPickerView(tipOption: $viewModel.tipOption)
                     
                     TipSelectionView(viewModel: $viewModel, customTipFocused: _customTipFocused)
-                        .pickerStyle(.segmented)
                         .padding(.bottom)
                                         
                     Section(header: TitleView(title: "CHECK AMOUNT:")) {
