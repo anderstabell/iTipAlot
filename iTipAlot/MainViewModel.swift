@@ -21,7 +21,7 @@ enum TipOption {
     var checkAmount = ""
     var numberOfPeople = 2
     var tipPercentage: Double = 20
-    var customTipAmount = 0.0
+    var customTipAmount: Double = 0
     var tipOption: TipOption = .percentage
 
     /// This will check if the `checkAmount` can be a `Double`. If not, make it a zero (0)
