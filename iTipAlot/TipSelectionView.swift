@@ -25,14 +25,11 @@ struct TipSelectionView: View {
                     .foregroundStyle(.primary)
                     .font(.system(size: 20))
                     .bold()
-                TextField("Custom $ Tip", value: $viewModel.customTipAmount, format: .number)
+                TextField("Custom $ Tip", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
                     .opacity(0.5)
                     .focused($customTipFocused)
-                    .onSubmit {
-                        customTipFocused = false
-                    }
             }
         }
     }
