@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct MainView: View {
-
+    
     @State private var viewModel = MainViewModel()
     @FocusState private var customTipFocused: Bool
     @FocusState private var amountIsFocused: Bool
-
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
                     CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
                         .padding(.bottom)
-
+                    
                     CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
                         .padding(.bottom)
-
+                    
                     Picker("Tip Option", selection: $viewModel.tipOption) {
                         Text("Percentage").tag(TipOption.percentage)
                         Text("Custom $ Tip").tag(TipOption.customAmount)
                     }
                     .pickerStyle(.segmented)
                     .padding(.bottom)
-
+                    
                     /// This will give you the option between percentage, and custom dollar amount
                     /// - seealso: ``TipOption``
                     if viewModel.tipOption == .percentage {
@@ -54,18 +54,14 @@ struct MainView: View {
                         }
                         .padding(.bottom)
                     }
-
-
-                    /// Title of `AmountView`
-                    TitleView(title: "CHECK AMOUNT")
-
-                    /// Content of ``AmountView``
-                    AmountView(viewModel: $viewModel, amountIsFocused: _amountIsFocused)
-
-                    /// Title of `GuestCountView`
-                    TitleView(title: "SPLIT BY:")
-
-                    GuestCountView(guestCount: $viewModel.numberOfPeople)
+                    
+                    Section(header: TitleView(title: "CHECK AMOUNT:")) {
+                        AmountView(viewModel: $viewModel, amountIsFocused: _amountIsFocused)
+                    }
+                    
+                    Section(header: TitleView(title: "SPLIT BY:")) {
+                        GuestCountView(guestCount: $viewModel.numberOfPeople)
+                    }
                 }
                 .navigationTitle("We Like To Tip")
                 .padding()
@@ -74,15 +70,19 @@ struct MainView: View {
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
                         Button("Done") {
-                            if customTipFocused {
-                                customTipFocused = false
-                            } else if amountIsFocused {
-                                amountIsFocused = false
-                            }
+                            dismissKeyboard()
                         }
                     }
                 }
             }
+        }
+    }
+    
+    private func dismissKeyboard() {
+        if customTipFocused {
+            customTipFocused = false
+        } else if amountIsFocused {
+            amountIsFocused = false
         }
     }
 }
@@ -93,9 +93,9 @@ struct MainView: View {
 }
 
 struct TitleView: View {
-
+    
     var title: String
-
+    
     var body: some View {
         HStack {
             Text(title)
