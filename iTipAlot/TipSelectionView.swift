@@ -10,7 +10,7 @@ import SwiftUI
 struct TipSelectionView: View {
     
     @Binding var viewModel: MainViewModel
-    @FocusState var customTipFocused: Bool
+    @FocusState.Binding var customTipFocused: Bool
     
     var body: some View {
         /// This will give you the ``TipOption`` between percentage, and custom dollar amount
@@ -29,5 +29,8 @@ struct TipSelectionView: View {
 }
 
 #Preview {
-    TipSelectionView(viewModel: .constant(MainViewModel()))
+    TipSelectionView(
+        viewModel: .constant(MainViewModel()),
+        customTipFocused: FocusState().projectedValue
+    )
 }
