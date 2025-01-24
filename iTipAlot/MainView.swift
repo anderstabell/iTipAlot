@@ -23,11 +23,11 @@ struct MainView: View {
                     
                     TipOptionPickerView(tipOption: $viewModel.tipOption)
                     
-                    TipSelectionView(viewModel: $viewModel, customTipFocused: _customTipFocused)
+                    TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
                         .padding(.bottom)
                                         
                     Section(header: TitleView(title: "CHECK AMOUNT:")) {
-                        AmountView(viewModel: $viewModel, amountIsFocused: _amountIsFocused)
+                        AmountView(viewModel: $viewModel, amountIsFocused: $amountIsFocused)
                     }
                     .padding(.bottom)
                     

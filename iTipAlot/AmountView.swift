@@ -7,27 +7,32 @@
 import SwiftUI
 
 struct AmountView: View {
-
+    
     @Binding var viewModel: MainViewModel
     
-    // Take FocusState as a parameter
-    @FocusState var amountIsFocused: Bool
-
+    @FocusState.Binding var amountIsFocused: Bool
+    
+    @State private var textFieldValue = ""
+    
     var body: some View {
-        HStack {
-            Image(systemName: "dollarsign")
-                .foregroundStyle(.primary)
-                .font(.system(size: 40))
-                .bold()
-
-            TextField("How much?", text: $viewModel.checkAmount)
-                .foregroundStyle(.primary)
-                .font(.system(size: 40))
-                .keyboardType(.decimalPad)
-                .focused($amountIsFocused)
-        }
+        TextField("How much?", text: $textFieldValue)
+            .foregroundStyle(.primary)
+            .font(.system(size: 40))
+            .keyboardType(.decimalPad)
+            .focused($amountIsFocused)
+            .onChange(of: textFieldValue) {
+                viewModel.updateCheckAmount($1)
+            }
+            .onAppear{
+                if let amount = viewModel.checkAmount {
+                    textFieldValue = String(amount)
+                }
+            }
     }
 }
 #Preview {
-    AmountView(viewModel: .constant(MainViewModel()))
+    AmountView(
+        viewModel: .constant(MainViewModel()),
+        amountIsFocused: FocusState().projectedValue
+    )
 }

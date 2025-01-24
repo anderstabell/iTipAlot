@@ -10,7 +10,7 @@ import SwiftUI
 struct TipSelectionView: View {
     
     @Binding var viewModel: MainViewModel
-    @FocusState var customTipFocused: Bool
+    @FocusState.Binding var customTipFocused: Bool
     
     var body: some View {
         /// This will give you the ``TipOption`` between percentage, and custom dollar amount
@@ -20,21 +20,17 @@ struct TipSelectionView: View {
             Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
                 .padding(.bottom)
         } else {
-            HStack {
-                Image(systemName: "dollarsign")
-                    .foregroundStyle(.primary)
-                    .font(.system(size: 20))
-                    .bold()
-                TextField("Custom $ Tip", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
-                    .keyboardType(.decimalPad)
-                    .textFieldStyle(.roundedBorder)
-                    .opacity(0.5)
-                    .focused($customTipFocused)
-            }
+            TextField("Custom Tip $$$", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
+                .keyboardType(.decimalPad)
+                .textFieldStyle(.roundedBorder)
+                .focused($customTipFocused)
         }
     }
 }
 
 #Preview {
-    TipSelectionView(viewModel: .constant(MainViewModel()))
+    TipSelectionView(
+        viewModel: .constant(MainViewModel()),
+        customTipFocused: FocusState().projectedValue
+    )
 }
