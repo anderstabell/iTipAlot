@@ -10,8 +10,7 @@ struct AmountView: View {
     
     @Binding var viewModel: MainViewModel
     
-    /// Take FocusState as a parameter
-    @FocusState var amountIsFocused: Bool
+    @FocusState.Binding var amountIsFocused: Bool
     
     /// This string acts as an intermediary between the TextField and the viewModel.checkAmount.
     @State private var textFieldValue = ""
