@@ -11,7 +11,7 @@ import Observation
 /// Tip option with percentage or custom dollar amount
 enum TipOption {
     case percentage
-    case customAmount
+    case customAmount 
 }
 
 /// Overall calculations for the ``CardView`` properties
