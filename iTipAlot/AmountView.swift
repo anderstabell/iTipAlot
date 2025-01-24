@@ -12,7 +12,6 @@ struct AmountView: View {
     
     @FocusState.Binding var amountIsFocused: Bool
     
-    /// This string acts as an intermediary between the TextField and the viewModel.checkAmount.
     @State private var textFieldValue = ""
     
     var body: some View {
@@ -32,5 +31,8 @@ struct AmountView: View {
     }
 }
 #Preview {
-    AmountView(viewModel: .constant(MainViewModel()))
+    AmountView(
+        viewModel: .constant(MainViewModel()),
+        amountIsFocused: FocusState().projectedValue
+    )
 }
