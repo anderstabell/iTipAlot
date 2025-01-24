@@ -22,13 +22,9 @@ struct AmountView: View {
             .font(.system(size: 40))
             .keyboardType(.decimalPad)
             .focused($amountIsFocused)
-        
-        /// This modifier detects when the textFieldValue changes. Inside the closure, viewModel `.updateCheckAmount(newValue)` is called to update the checkAmount in the view model.
-        /// - seealso: ``MainViewModel/updateCheckAmount(_:)``
-            .onChange(of: textFieldValue) { oldValue, newValue in
-                viewModel.updateCheckAmount(newValue)
+            .onChange(of: textFieldValue) {
+                viewModel.updateCheckAmount($1)
             }
-        /// This executes once when the view is loaded and sets the textFieldValue to the string value of checkAmount if it exists.
             .onAppear{
                 if let amount = viewModel.checkAmount {
                     textFieldValue = String(amount)
