@@ -14,7 +14,7 @@ struct TipOptionPickerView: View {
     var body: some View {
         Picker("Tip Option", selection: $tipOption) {
             Text("Percentage").tag(TipOption.percentage)
-            Text("Custom $ Tip").tag(TipOption.customAmount)
+            Text("Custom Tip").tag(TipOption.customAmount)
         }
         .pickerStyle(.segmented)
         .padding(.bottom)

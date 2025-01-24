@@ -7,25 +7,33 @@
 import SwiftUI
 
 struct AmountView: View {
-
+    
     @Binding var viewModel: MainViewModel
     
-    // Take FocusState as a parameter
+    /// Take FocusState as a parameter
     @FocusState var amountIsFocused: Bool
-
+    
+    /// This string acts as an intermediary between the TextField and the viewModel.checkAmount.
+    @State private var textFieldValue = ""
+    
     var body: some View {
-        HStack {
-            Image(systemName: "dollarsign")
-                .foregroundStyle(.primary)
-                .font(.system(size: 40))
-                .bold()
-
-            TextField("How much?", text: $viewModel.checkAmount)
-                .foregroundStyle(.primary)
-                .font(.system(size: 40))
-                .keyboardType(.decimalPad)
-                .focused($amountIsFocused)
-        }
+        TextField("How much?", text: $textFieldValue)
+            .foregroundStyle(.primary)
+            .font(.system(size: 40))
+            .keyboardType(.decimalPad)
+            .focused($amountIsFocused)
+        
+        /// This modifier detects when the textFieldValue changes. Inside the closure, viewModel `.updateCheckAmount(newValue)` is called to update the checkAmount in the view model.
+        /// - seealso: ``MainViewModel/updateCheckAmount(_:)``
+            .onChange(of: textFieldValue) { oldValue, newValue in
+                viewModel.updateCheckAmount(newValue)
+            }
+        /// This executes once when the view is loaded and sets the textFieldValue to the string value of checkAmount if it exists.
+            .onAppear{
+                if let amount = viewModel.checkAmount {
+                    textFieldValue = String(amount)
+                }
+            }
     }
 }
 #Preview {

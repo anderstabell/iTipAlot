@@ -20,17 +20,10 @@ struct TipSelectionView: View {
             Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
                 .padding(.bottom)
         } else {
-            HStack {
-                Image(systemName: "dollarsign")
-                    .foregroundStyle(.primary)
-                    .font(.system(size: 20))
-                    .bold()
-                TextField("Custom $ Tip", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
-                    .keyboardType(.decimalPad)
-                    .textFieldStyle(.roundedBorder)
-                    .opacity(0.5)
-                    .focused($customTipFocused)
-            }
+            TextField("Custom Tip $$$", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
+                .keyboardType(.decimalPad)
+                .textFieldStyle(.roundedBorder)
+                .focused($customTipFocused)
         }
     }
 }
