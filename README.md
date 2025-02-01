@@ -1,6 +1,6 @@
 # I Tip A Lot
 ## Anders Tabell
-### Tips computes the tip and total amount for a bill. The app uses the base amount and tip percentage, or custom dollar amount, to calculate the amount owed.
+### I Tip A Lot computes the tip and total amount for a bill. The app uses the base amount and tip percentage, or custom dollar amount, to calculate the amount owed.
 # Features
 - Enter the bill amount.
 - Select a tip percentage between 0 and 100.
