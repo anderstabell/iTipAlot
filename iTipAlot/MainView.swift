@@ -35,7 +35,7 @@ struct MainView: View {
                         GuestCountView(guestCount: $viewModel.numberOfPeople)
                     }
                 }
-                .navigationTitle("We Like To Tip")
+                .navigationTitle("Tip In")
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .background(Image("dollar").opacity(0.2))
