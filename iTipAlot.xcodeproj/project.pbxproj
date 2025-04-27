@@ -11,6 +11,7 @@
 		760447622B581079008FDEFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760447612B581079008FDEFB /* MainView.swift */; };
 		760447642B58107A008FDEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447632B58107A008FDEFB /* Assets.xcassets */; };
 		760447672B58107A008FDEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447662B58107A008FDEFB /* Preview Assets.xcassets */; };
+		763183AB2DBEB3D4001ECF8A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763183AA2DBEB3D4001ECF8A /* LoadingView.swift */; };
 		766E7FCE2D36EFDB0000DAA1 /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E7FCD2D36EFDB0000DAA1 /* AmountView.swift */; };
 		76AAB7902D42D261004274FD /* TipOptionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */; };
 		76AAB7922D42D605004274FD /* TipSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AAB7912D42D605004274FD /* TipSelectionView.swift */; };
@@ -38,6 +39,7 @@
 		760447612B581079008FDEFB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		760447632B58107A008FDEFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		760447662B58107A008FDEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		763183AA2DBEB3D4001ECF8A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		766E7FCD2D36EFDB0000DAA1 /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		76A7BA762D415091001C3058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOptionPickerView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			children = (
 				76A7BA762D415091001C3058 /* Info.plist */,
 				7604475F2B581079008FDEFB /* iTipAlotApp.swift */,
+				763183AA2DBEB3D4001ECF8A /* LoadingView.swift */,
 				760447612B581079008FDEFB /* MainView.swift */,
 				76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */,
 				76AAB7912D42D605004274FD /* TipSelectionView.swift */,
@@ -137,7 +140,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					7604475B2B581079008FDEFB = {
 						CreatedOnToolsVersion = 15.2;
@@ -187,6 +190,7 @@
 				760447602B581079008FDEFB /* iTipAlotApp.swift in Sources */,
 				76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */,
 				76AAB7922D42D605004274FD /* TipSelectionView.swift in Sources */,
+				763183AB2DBEB3D4001ECF8A /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +232,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 54F76XRMYB;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -291,6 +296,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 54F76XRMYB;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -320,7 +326,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iTipAlot/Preview Content\"";
-				DEVELOPMENT_TEAM = 54F76XRMYB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iTipAlot/Info.plist;
@@ -357,7 +362,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iTipAlot/Preview Content\"";
-				DEVELOPMENT_TEAM = 54F76XRMYB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iTipAlot/Info.plist;
