@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GuestCountView: View {
     
-    @Binding var guestCount: Int
+    @Binding var guestCount: Int 
     
     var body: some View {
         HStack {
@@ -27,6 +27,7 @@ struct GuestCountView: View {
             Text("\(guestCount)")
                 .font(.system(size: 40, weight: .black, design: .monospaced))
                 .padding(.horizontal)
+                .contentTransition(.numericText(value: Double(guestCount)))
             
             Button {
                 guestCount += 1
@@ -37,6 +38,7 @@ struct GuestCountView: View {
                     .bold()
             }
         }
+        .animation(.default, value: guestCount)
     }
 }
 
