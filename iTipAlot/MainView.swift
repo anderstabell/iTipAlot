@@ -13,42 +13,52 @@ struct MainView: View {
     @FocusState private var customTipFocused: Bool
     @FocusState private var amountIsFocused: Bool
     
+    @State private var isLoading: Bool = true
+    
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
-                    CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
-                    
-                    CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
-                    
-                    TipOptionPickerView(tipOption: $viewModel.tipOption)
-                    
-                    TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
-                        .padding(.bottom)
-                                        
-                    Section(header: TitleView(title: "CHECK AMOUNT:")) {
-                        AmountView(viewModel: $viewModel, amountIsFocused: $amountIsFocused)
+        ZStack {
+            NavigationStack {
+                ScrollView {
+                    VStack {
+                        if isLoading {
+                            LoadingView(isLoading: $isLoading)
+                                .transition(.opacity)
+                        } else {
+                            CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
+                            
+                            CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
+                            
+                            TipOptionPickerView(tipOption: $viewModel.tipOption)
+                            
+                            TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
+                                .padding(.bottom)
+                            
+                            Section(header: TitleView(title: "CHECK AMOUNT:")) {
+                                AmountView(viewModel: $viewModel, amountIsFocused: $amountIsFocused)
+                            }
+                            .padding(.bottom)
+                            
+                            Section(header: TitleView(title: "SPLIT BY:")) {
+                                GuestCountView(guestCount: $viewModel.numberOfPeople)
+                            }
+                        }
                     }
-                    .padding(.bottom)
-                    
-                    Section(header: TitleView(title: "SPLIT BY:")) {
-                        GuestCountView(guestCount: $viewModel.numberOfPeople)
-                    }
-                }
-                .navigationTitle("Tip In")
-                .navigationBarTitleDisplayMode(.inline)
-                .padding()
-                .background(Image("dollar").opacity(0.2))
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            dismissKeyboard()
+                    .navigationTitle("Tip In")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .padding()
+                    .background(Image("dollar").opacity(0.2))
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Done") {
+                                dismissKeyboard()
+                            }
                         }
                     }
                 }
             }
         }
+        .animation(.easeInOut(duration: 0.4), value: isLoading)
     }
     
     private func dismissKeyboard() {
