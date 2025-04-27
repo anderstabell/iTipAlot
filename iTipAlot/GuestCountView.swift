@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GuestCountView: View {
     
-    @Binding var guestCount: Int
+    @Binding var guestCount: Int 
     
     var body: some View {
         HStack {
