@@ -50,7 +50,6 @@ struct MainView: View {
                     .navigationTitle("Tip In")
                     .navigationBarTitleDisplayMode(.inline)
                     .padding()
-                    .background(Image("dollar").opacity(0.2))
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             Spacer()
@@ -60,6 +59,7 @@ struct MainView: View {
                         }
                     }
                 }
+                .background(Image("dollar").opacity(0.2))
             }
         }
         .animation(.easeInOut(duration: 0.4), value: isLoading)
