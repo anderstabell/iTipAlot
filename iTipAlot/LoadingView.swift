@@ -20,7 +20,7 @@ struct LoadingView: View {
     
     let imageName = "dollarsign.circle.fill"
     
-    var body: some View {
+    var body: some View { // TODO: refactor this code
         
         VStack(spacing: 30) {
             
