@@ -38,13 +38,19 @@ struct LoadingView: View {
                     }
                 }
             
-            Text("Calculating Best Tips...")
+            Text("Make it a good one...")
                 .font(.title2).foregroundColor(.secondary)
             
-            ProgressView(value: min(max(progress, 0.0), 1.0), total: 1.0)
-                .progressViewStyle(LinearProgressViewStyle(tint: .green))
-                .padding(.horizontal, 50)
-                .shadow(color: .gray.opacity(0.3), radius: 3, y: 2)
+            VStack {
+                Text("\(Int(min(max(progress, 0.0), 1.0) * 100))%")
+                    .font(.title3)
+                    .foregroundStyle(.green)
+                
+                ProgressView(value: min(max(progress, 0.0), 1.0), total: 1.0)
+                    .progressViewStyle(LinearProgressViewStyle(tint: .green))
+                    .padding(.horizontal, 50)
+                    .shadow(color: .gray.opacity(0.3), radius: 3, y: 3)
+            }
             
             Spacer()
         }
