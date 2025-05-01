@@ -14,15 +14,15 @@ struct LoadingView: View {
     @State private var timer: Timer?
     @State private var rotationAngle: Double = 0.0
     
-    let loadingDuration: Double = 2.5
+    let loadingDuration: Double = 3.0
     let timerInterval: Double = 0.05
-    let rotationSpeed: Double = 3.0
+    let rotationSpeed: Double = 4.0
     
     let imageName = "dollarsign.circle.fill"
     
     var body: some View {
         
-        VStack(spacing: 30) {
+        VStack(spacing: 32) {
             
             Spacer()
             
@@ -31,7 +31,7 @@ struct LoadingView: View {
                 .scaledToFit()
                 .frame(width: 256, height: 256)
                 .foregroundColor(.green)
-                .rotation3DEffect(.degrees(rotationAngle), axis: (x: 0.0, y: 1.0, z: 0.0))
+                .rotation3DEffect(.degrees(rotationAngle), axis: (x: 0.0, y: 1.0, z: 1.0))
                 .onAppear {
                     withAnimation(.linear(duration: rotationSpeed).repeatForever(autoreverses: false)) {
                         rotationAngle = 360.0
