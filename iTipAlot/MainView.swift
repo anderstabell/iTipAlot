@@ -24,23 +24,27 @@ struct MainView: View {
                             LoadingView(isLoading: $isLoading)
                                 .transition(.opacity)
                         } else {
-                            CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
                             
-                            CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
-                            
-                            TipOptionPickerView(tipOption: $viewModel.tipOption)
-                            
-                            TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
+                            Group {
+                                CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
+                                
+                                CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
+                                
+                                TipOptionPickerView(tipOption: $viewModel.tipOption)
+                                
+                                TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
+                                    .padding(.bottom)
+                                
+                                Section(header: TitleView(title: "CHECK AMOUNT:")) {
+                                    AmountView(viewModel: $viewModel, amountIsFocused: $amountIsFocused)
+                                }
                                 .padding(.bottom)
-                            
-                            Section(header: TitleView(title: "CHECK AMOUNT:")) {
-                                AmountView(viewModel: $viewModel, amountIsFocused: $amountIsFocused)
+                                
+                                Section(header: TitleView(title: "SPLIT BY:")) {
+                                    GuestCountView(guestCount: $viewModel.numberOfPeople)
+                                }
                             }
-                            .padding(.bottom)
-                            
-                            Section(header: TitleView(title: "SPLIT BY:")) {
-                                GuestCountView(guestCount: $viewModel.numberOfPeople)
-                            }
+                            .transition(.opacity)
                         }
                     }
                     .navigationTitle("Tip In")

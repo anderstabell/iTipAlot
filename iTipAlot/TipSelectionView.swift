@@ -14,23 +14,49 @@ struct TipSelectionView: View {
     
     var body: some View {
         /// This will give you the ``TipOption`` between percentage, and custom dollar amount
-        if viewModel.tipOption == .percentage {
-            Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
-                .tint(.secondary)
-            Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
-                .padding(.bottom)
-        } else {
-            TextField("Custom Tip $$$", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
+        ZStack {
+            VStack {
+                Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
+                    .tint(.secondary)
+                Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
+                    .padding(.bottom)
+            }
+            .opacity(viewModel.tipOption == .percentage ? 1.0 : 0.0)
+            .allowsHitTesting(viewModel.tipOption == .percentage)
+            
+             TextField("Custom Tip $$$", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
                 .focused($customTipFocused)
+                .opacity(viewModel.tipOption == .customAmount ? 1.0 : 0.0)
+                .allowsHitTesting(viewModel.tipOption == .customAmount)
+            
         }
+        .animation(.easeInOut(duration: 0.3), value: viewModel.tipOption)
     }
 }
 
 #Preview {
-    TipSelectionView(
-        viewModel: .constant(MainViewModel()),
-        customTipFocused: FocusState().projectedValue
-    )
+    struct PreviewWrapper: View {
+        @State var viewModel = MainViewModel()
+        @FocusState var focus: Bool
+        
+        var body: some View {
+            VStack {
+                Picker("Preview Option", selection: $viewModel.tipOption.animation()) {
+                    Text("Percentage").tag(TipOption.percentage)
+                    Text("Custom").tag(TipOption.customAmount)
+                }
+                .pickerStyle(.segmented)
+                .padding()
+                
+                TipSelectionView(
+                    viewModel: $viewModel,
+                    customTipFocused: $focus
+                )
+                .padding()
+            }
+        }
+    }
+    return PreviewWrapper()
 }
