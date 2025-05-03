@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct LoadingView: View {
-    @Binding var isLoading: Bool
     
+    @Binding var isLoading: Bool
     @State private var progress: Double = 0.0
     @State private var timer: Timer?
     @State private var rotationAngle: Double = 0.0
-    
+        
     let loadingDuration: Double = 3.0
     let timerInterval: Double = 0.05
     let rotationSpeed: Double = 4.0
@@ -22,7 +22,7 @@ struct LoadingView: View {
     
     var body: some View {
         
-        VStack(spacing: 32) { // TODO: Refactor the view
+        VStack(spacing: 32) {
             
             Spacer()
             
