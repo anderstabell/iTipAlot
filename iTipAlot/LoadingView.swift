@@ -38,9 +38,7 @@ struct LoadingView: View {
                     }
                 }
             
-            Text("Warming up the calculator...")
-                .font(.title2)
-                .foregroundStyle(.green)
+            TextShimmer(text: "Warming up the calculator...")
             
             VStack {
                 Text("\(Int(min(max(progress, 0.0), 1.0) * 100))%")
@@ -88,4 +86,5 @@ struct LoadingView: View {
 
 #Preview {
     LoadingView(isLoading: .constant(true))
+        .preferredColorScheme(.dark)
 }
