@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct LoadingView: View {
-    @Binding var isLoading: Bool
     
+    @Binding var isLoading: Bool
     @State private var progress: Double = 0.0
     @State private var timer: Timer?
     @State private var rotationAngle: Double = 0.0
-    
+        
     let loadingDuration: Double = 3.0
     let timerInterval: Double = 0.05
     let rotationSpeed: Double = 4.0
@@ -38,8 +38,7 @@ struct LoadingView: View {
                     }
                 }
             
-            Text("Make it a good one...")
-                .font(.title2).foregroundColor(.secondary)
+            TextShimmer(text: "Warming up the calculator...")
             
             VStack {
                 Text("\(Int(min(max(progress, 0.0), 1.0) * 100))%")
@@ -87,4 +86,5 @@ struct LoadingView: View {
 
 #Preview {
     LoadingView(isLoading: .constant(true))
+        .preferredColorScheme(.dark)
 }

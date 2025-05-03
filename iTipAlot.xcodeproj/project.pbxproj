@@ -11,6 +11,7 @@
 		760447622B581079008FDEFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760447612B581079008FDEFB /* MainView.swift */; };
 		760447642B58107A008FDEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447632B58107A008FDEFB /* Assets.xcassets */; };
 		760447672B58107A008FDEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447662B58107A008FDEFB /* Preview Assets.xcassets */; };
+		761DCC032DC69DB300311ED9 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DCC022DC69DB300311ED9 /* ShimmerView.swift */; };
 		763183AB2DBEB3D4001ECF8A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763183AA2DBEB3D4001ECF8A /* LoadingView.swift */; };
 		766E7FCE2D36EFDB0000DAA1 /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E7FCD2D36EFDB0000DAA1 /* AmountView.swift */; };
 		76AAB7902D42D261004274FD /* TipOptionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */; };
@@ -39,6 +40,7 @@
 		760447612B581079008FDEFB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		760447632B58107A008FDEFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		760447662B58107A008FDEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		761DCC022DC69DB300311ED9 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		763183AA2DBEB3D4001ECF8A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		766E7FCD2D36EFDB0000DAA1 /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		76A7BA762D415091001C3058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				76A7BA762D415091001C3058 /* Info.plist */,
 				7604475F2B581079008FDEFB /* iTipAlotApp.swift */,
 				763183AA2DBEB3D4001ECF8A /* LoadingView.swift */,
+				761DCC022DC69DB300311ED9 /* ShimmerView.swift */,
 				760447612B581079008FDEFB /* MainView.swift */,
 				76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */,
 				76AAB7912D42D605004274FD /* TipSelectionView.swift */,
@@ -184,6 +187,7 @@
 			files = (
 				76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */,
 				760447622B581079008FDEFB /* MainView.swift in Sources */,
+				761DCC032DC69DB300311ED9 /* ShimmerView.swift in Sources */,
 				76AAB7902D42D261004274FD /* TipOptionPickerView.swift in Sources */,
 				766E7FCE2D36EFDB0000DAA1 /* AmountView.swift in Sources */,
 				76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */,
