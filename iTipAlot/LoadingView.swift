@@ -38,7 +38,7 @@ struct LoadingView: View {
                     }
                 }
             
-            Text("Make it a good one...")
+            Text("Warming up the calculator...")
                 .font(.title2).foregroundColor(.secondary)
             
             VStack {
