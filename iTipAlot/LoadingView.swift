@@ -22,7 +22,7 @@ struct LoadingView: View {
     
     var body: some View {
         
-        VStack(spacing: 32) {
+        VStack(spacing: 32) { // TODO: Refactor the view
             
             Spacer()
             
