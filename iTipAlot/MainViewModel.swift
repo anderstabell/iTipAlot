@@ -7,36 +7,70 @@
 
 import Foundation
 import Observation
-// TODO: Better documentation
-/// Tip option with percentage or custom dollar amount
+
+/// Represents the two ways a tip can be specified: as a percentage of the subtotal
+/// or as a fixed custom dollar amount.
+///
+/// This enum is used by ``MainViewModel/tipOption`` to determine the calculation logic for the tip.
 enum TipOption {
+    /// Tip is calculated as a percentage of the `checkAmount`.
+    /// The percentage value is stored in ``MainViewModel/tipPercentage``.
     case percentage
+    /// Tip is a fixed dollar amount specified by ``MainViewModel/customTipAmount``.
     case customAmount
 }
 
-/// Overall calculations for the ``CardView`` properties
+/// This class manages the state and logic for calculating tips, designed to be observed by SwiftUI views.
+///
+/// It holds all input values like check amount, number of people, and tip preferences,
+/// and provides computed properties for derived values like tip amount, total per person, etc.
 @Observable final class MainViewModel {
     
-    /// Properties for calculating the check
+    // MARK: - Input Properties
+    
+    /// The initial amount of the check/bill, before any tip.
+    /// Entered by the user, typically from a TextField. Optional because it might not be set initially or
+    /// could be an invalid number.
     var checkAmount: Double?
+    
+    /// The number of people splitting the bill. Defaults to 2.
+    /// Used to calculate per-person amounts.
     var numberOfPeople = 2
+    
+    /// The tip percentage to apply if `tipOption` is `.percentage`.
+    /// Represented as a whole number (e.g., 20 for 20%). Defaults to 20%.
     var tipPercentage: Double = 20
+    
+    /// The custom, fixed dollar amount for the tip if `tipOption` is `.customAmount`.
+    /// Optional because it's only used when `tipOption` is `.customAmount` and might not be set.
     var customTipAmount: Double?
+    
+    /// Determines how the tip is calculated, either as a percentage or a custom amount.
+    /// Defaults to `.percentage`. See ``TipOption`` for details.
     var tipOption: TipOption = .percentage
     
-    /// This will check if the `checkAmount` can be a `Double`
+    // MARK: - Computed Properties for Display
+    
+    /// The subtotal of the check. Returns `checkAmount` if set, otherwise 0.
+    /// This provides a non-optional `Double` for subsequent calculations, ensuring they don't fail
+    /// if `checkAmount` is `nil`.
     var subTotal: Double { checkAmount ?? 0 }
     
-    /// Calculation for the subtotal per person
+    /// Calculates the portion of the `subTotal` that each person is responsible for, before tip.
+    /// It divides the `subTotal` by the `numberOfPeople`.
     var subTotalPerPerson: Double {
         let peopleCount = Double(numberOfPeople)
-        let subTotal = checkAmount ?? 0
+        // Ensure peopleCount is not zero to avoid division by zero,
+        // though UI constraints should typically prevent numberOfPeople from being < 1.
+        guard peopleCount > 0 else { return subTotal }
         return subTotal / peopleCount
     }
     
-    /// Calculation for the tip value
+    /// Calculates the actual tip amount based on the selected `tipOption`.
+    /// - If `tipOption` is `.percentage`, it calculates `subTotal * (tipPercentage / 100)`.
+    /// - If `tipOption` is `.customAmount`, it returns `customTipAmount` (or 0 if `customTipAmount` is `nil`).
     var tipValue: Double {
-        let subTotal = checkAmount ?? 0
+        /// `subTotal` conveniently handles the case where `checkAmount` is nil.
         switch tipOption {
         case .percentage:
             return subTotal / 100 * tipPercentage
@@ -45,26 +79,42 @@ enum TipOption {
         }
     }
     
-    /// Calculation for tip value per person
-    var tipValuePerPerson: Double { tipValue / Double(numberOfPeople) }
-    
-    /// Calculation for total amount, tip included
-    var totalAmountWithTip: Double {
-        let subTotal = checkAmount ?? 0
-        let tipValue = self.tipValue
-        let grandTotal = subTotal + tipValue
-        return grandTotal
+    /// Calculates the portion of the `tipValue` that each person is responsible for.
+    /// It divides the total `tipValue` by the `numberOfPeople`.
+    var tipValuePerPerson: Double {
+        let peopleCount = Double(numberOfPeople)
+        guard peopleCount > 0 else { return tipValue }
+        return tipValue / peopleCount
     }
     
-    /// Calculation for the grand total per person
+    /// Calculates the grand total amount, which is the `subTotal` plus the calculated `tipValue`.
+    var totalAmountWithTip: Double {
+        /// Both `subTotal` and `tipValue` are already computed and handle nil inputs appropriately.
+        return subTotal + tipValue
+    }
+    
+    /// Calculates the final amount each person has to pay, including their share of the subtotal and the tip.
+    /// It divides the `totalAmountWithTip` by the `numberOfPeople`.
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople)
-        let amountPerPerson = totalAmountWithTip / peopleCount
-        return amountPerPerson
+        guard peopleCount > 0 else { return totalAmountWithTip }
+        return totalAmountWithTip / peopleCount
     }
     
-    /// This converts the input String to a Double and assigns it to the checkAmount property.
+    // MARK: - Methods
+    
+    /// Updates the `checkAmount` property by attempting to convert the input `String` to a `Double`.
+    /// If the conversion fails (e.g., the string is not a valid number or is empty), `checkAmount` will be set to `nil`.
+    /// This method is typically called when a TextField's value changes.
+    ///
+    /// - Parameter text: The string input from the user, representing the check amount.
     func updateCheckAmount(_ text: String) {
-        checkAmount = Double(text)
+        if text.isEmpty {
+            /// Explicitly set to nil for empty string
+            checkAmount = nil
+        } else {
+            /// `Double(text)` returns nil if conversion fails
+            checkAmount = Double(text)
+        }
     }
 }
