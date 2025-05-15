@@ -7,7 +7,7 @@
 
 import Foundation
 import Observation
-
+// TODO: Better documentation
 /// Tip option with percentage or custom dollar amount
 enum TipOption {
     case percentage
