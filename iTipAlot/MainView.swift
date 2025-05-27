@@ -59,6 +59,7 @@ struct MainView: View {
                         }
                     }
                 }
+                .scrollBounceBehavior(.basedOnSize)
                 .background(Image("dollar").opacity(0.2))
             }
         }
