@@ -35,4 +35,5 @@ struct AmountView: View {
         viewModel: .constant(MainViewModel()),
         amountIsFocused: FocusState().projectedValue
     )
+    .preferredColorScheme(.dark)
 }
