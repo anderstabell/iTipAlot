@@ -17,6 +17,7 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
+            // TODO: Fix so background does not move
             NavigationStack {
                 ScrollView {
                     VStack {
