@@ -18,7 +18,7 @@ struct TipSelectionView: View {
             VStack {
                 Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
                     .tint(.secondary)
-                Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
+                Text("Tip Percentage: \((viewModel.tipPercentage / 100.0).formatted(.percent.precision(.fractionLength(0))))")
                     .padding(.bottom)
             }
             .opacity(viewModel.tipOption == .percentage ? 1.0 : 0.0)
