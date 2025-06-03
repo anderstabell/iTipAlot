@@ -34,7 +34,6 @@ struct TipSelectionView: View {
                         if viewModel.tipOption == .customAmount && viewModel.customTipAmount != nil {
                             Button {
                                 viewModel.customTipAmount = nil
-//                                 customTipFocused = false
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.secondary)
