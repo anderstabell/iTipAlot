@@ -38,7 +38,7 @@ struct TipSelectionView: View {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.secondary)
                             }
-                            .padding(.trailing, 8)
+                            .padding()
                         }
                     }
                     , alignment: .trailing
