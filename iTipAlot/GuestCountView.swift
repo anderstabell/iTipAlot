@@ -14,17 +14,13 @@ struct GuestCountView: View {
     var body: some View {
         HStack {
             Button {
-                if guestCount > 1 {
-                    guestCount -= 1
-                }
+                guard guestCount > 1 else { return }
+                guestCount -= 1
             } label: {
                 Image(systemName: "arrow.left.circle")
-                    .font(.system(.title, design: .rounded))
-                    .foregroundStyle(.white)
-                    .bold()
             }
             
-            Text("\(guestCount)")
+            Text(guestCount.formatted())
                 .font(.system(size: 40, weight: .black, design: .monospaced))
                 .padding(.horizontal)
                 .contentTransition(.numericText(value: Double(guestCount)))
@@ -33,16 +29,17 @@ struct GuestCountView: View {
                 guestCount += 1
             } label: {
                 Image(systemName: "arrow.right.circle")
-                    .font(.system(.title, design: .rounded))
-                    .foregroundStyle(.white)
-                    .bold()
             }
         }
         .animation(.default, value: guestCount)
+        .font(.system(.title, design: .rounded, weight: .bold))
+        .foregroundStyle(.white)
+        .buttonRepeatBehavior(.enabled)
     }
 }
 
 #Preview {
-    GuestCountView(guestCount: .constant(1))
+    @Previewable @State var guestCount = 1
+    GuestCountView(guestCount: $guestCount)
         .preferredColorScheme(.dark)
 }
