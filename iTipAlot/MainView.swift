@@ -16,9 +16,11 @@ struct MainView: View {
     @State private var isLoading: Bool = true
     
     var body: some View {
-        // TODO: Fix so background does not move
+        
         NavigationStack {
+            
             ScrollView {
+                
                 if isLoading {
                     LoadingView(isLoading: $isLoading)
                         .transition(.opacity)
