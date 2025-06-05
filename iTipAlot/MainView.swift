@@ -16,79 +16,68 @@ struct MainView: View {
     @State private var isLoading: Bool = true
     
     var body: some View {
-        ZStack {
-            // TODO: Fix so background does not move
-            NavigationStack {
-                ScrollView {
-                    VStack {
-                        if isLoading {
-                            LoadingView(isLoading: $isLoading)
-                                .transition(.opacity)
-                        } else {
-                            
-                            Group {
-                                CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
-                                
-                                CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
-                                
-                                TipOptionPickerView(tipOption: $viewModel.tipOption)
-                                
-                                TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
-                                    .padding(.bottom)
-                                
-                                Section(header: TitleView(title: "CHECK AMOUNT:")) {
-                                    AmountView(viewModel: $viewModel, amountIsFocused: $amountIsFocused)
-                                }
-                                .padding(.bottom)
-                                
-                                Section(header: TitleView(title: "SPLIT BY:")) {
-                                    GuestCountView(guestCount: $viewModel.numberOfPeople)
-                                }
-                            }
-                            .transition(.opacity)
+        // TODO: Fix so background does not move
+        NavigationStack {
+            ScrollView {
+                if isLoading {
+                    LoadingView(isLoading: $isLoading)
+                        .transition(.opacity)
+                } else {
+                    LazyVStack {
+                        CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
+                        
+                        CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
+                        
+                        TipOptionPickerView(tipOption: $viewModel.tipOption)
+                        
+                        TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
+                            .padding(.bottom)
+                        
+                        Section {
+                            TextField(
+                                "How much?",
+                                value: $viewModel.checkAmount,
+                                format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                            .font(.system(size: 40))
+                            .keyboardType(.decimalPad)
+                            .focused($amountIsFocused)
+                        } header: {
+                            LabeledContent("CHECK AMOUNT:", value: "")
+                        }
+                        .padding(.bottom)
+                        
+                        Section {
+                            GuestCountView(guestCount: $viewModel.numberOfPeople)
+                        } header: {
+                            LabeledContent("SPLIT BY:", value: "")
                         }
                     }
-                    .navigationTitle("Tip In")
-                    .navigationBarTitleDisplayMode(.inline)
+                    .transition(.opacity)
                     .padding()
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                dismissKeyboard()
-                            }
-                        }
+                }
+            }
+            .animation(.easeInOut(duration: 0.4), value: isLoading)
+            .scrollBounceBehavior(.basedOnSize)
+            .background(Image(.dollar).opacity(0.2))
+            .navigationTitle("Tip In")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    LabeledContent("") {
+                        Button("Done") { dismissKeyboard() }
                     }
                 }
-                .scrollBounceBehavior(.basedOnSize)
-                .background(Image("dollar").opacity(0.2))
             }
         }
-        .animation(.easeInOut(duration: 0.4), value: isLoading)
     }
     
     private func dismissKeyboard() {
-        if customTipFocused {
-            customTipFocused = false
-        } else if amountIsFocused {
-            amountIsFocused = false
-        }
+        customTipFocused = false
+        amountIsFocused = false
     }
 }
 
 #Preview {
     MainView()
         .preferredColorScheme(.dark)
-}
-
-struct TitleView: View {
-    
-    var title: String
-    
-    var body: some View {
-        HStack {
-            Text(title)
-            Spacer()
-        }
-    }
 }

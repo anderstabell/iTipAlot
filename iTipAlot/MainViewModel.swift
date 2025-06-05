@@ -100,21 +100,4 @@ enum TipOption {
         guard peopleCount > 0 else { return totalAmountWithTip }
         return totalAmountWithTip / peopleCount
     }
-    
-    // MARK: - Methods
-    
-    /// Updates the `checkAmount` property by attempting to convert the input `String` to a `Double`.
-    /// If the conversion fails (e.g., the string is not a valid number or is empty), `checkAmount` will be set to `nil`.
-    /// This method is typically called when a TextField's value changes.
-    ///
-    /// - Parameter text: The string input from the user, representing the check amount.
-    func updateCheckAmount(_ text: String) {
-        if text.isEmpty {
-            /// Explicitly set to nil for empty string
-            checkAmount = nil
-        } else {
-            /// `Double(text)` returns nil if conversion fails
-            checkAmount = Double(text)
-        }
-    }
 }
