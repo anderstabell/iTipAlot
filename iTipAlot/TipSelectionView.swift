@@ -18,16 +18,31 @@ struct TipSelectionView: View {
             VStack {
                 Slider(value: $viewModel.tipPercentage, in: 0...100, step: 1)
                     .tint(.secondary)
-                Text("Tip Percentage: \(Int(viewModel.tipPercentage))%")
+                Text("Tip Percentage: \((viewModel.tipPercentage / 100.0).formatted(.percent.precision(.fractionLength(0))))")
                     .padding(.bottom)
             }
             .opacity(viewModel.tipOption == .percentage ? 1.0 : 0.0)
             .allowsHitTesting(viewModel.tipOption == .percentage)
             
-             TextField("Custom Tip $$$", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
+            TextField("Custom Total Tip", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
                 .focused($customTipFocused)
+                .overlay(
+                    
+                    Group {
+                        if viewModel.tipOption == .customAmount && viewModel.customTipAmount != nil {
+                            Button {
+                                viewModel.customTipAmount = nil
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding()
+                        }
+                    }
+                    , alignment: .trailing
+                )
                 .opacity(viewModel.tipOption == .customAmount ? 1.0 : 0.0)
                 .allowsHitTesting(viewModel.tipOption == .customAmount)
             
