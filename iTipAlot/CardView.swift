@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct CardView: View { // TODO: Inject MainViewModel in here
     
     /// Properties for the card label
     var cardLabelText = ""
