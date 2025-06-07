@@ -38,7 +38,7 @@ struct LoadingView: View {
                     }
                 }
             
-            TextShimmer(text: "Warming up the calculator...")
+            TextShimmerView(text: "Warming up the calculator...")
             
             VStack {
                 Text("\(Int(min(max(progress, 0.0), 1.0) * 100))%")

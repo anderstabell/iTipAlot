@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ShimmerView: View {
-    var body: some View { // TODO: Split this up into 2 views
+    var body: some View {
         VStack {
-            TextShimmer(text: "Warming up the calculator...")
+            
+            TextShimmerView(text: "Warming up the calculator...")
                 .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -19,61 +20,8 @@ struct ShimmerView: View {
     }
 }
 
+
 #Preview {
     ShimmerView()
 }
 
-struct TextShimmer: View {
-    
-    var text: String
-    @State private var startAnimationTrigger = false
-    
-    let baseTextColor: Color = .green.opacity(0.5)
-    let shimmerColor: Color = .white
-    let gradientWidth: CGFloat = 150
-    let animationDuration: Double = 4.0
-    
-    var body: some View {
-        ZStack {
-            
-            Text(text)
-                .font(.system(size: 30))
-                .foregroundStyle(baseTextColor)
-            
-            Text(text)
-                .font(.system(size: 30))
-                .foregroundStyle(shimmerColor)
-                .mask(
-                    
-                    GeometryReader { geo in
-                        let textWidth = geo.size.width
-                        let startX = -gradientWidth
-                        let endX = textWidth + gradientWidth
-                        
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                .clear,
-                                shimmerColor.opacity(0.9),
-                                .clear
-                            ]),
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
-                        .frame(width: gradientWidth)
-                        .offset(x: startAnimationTrigger ? endX : startX)
-                        
-                    }
-                )
-        }
-        .phaseAnimator([false, true], trigger: startAnimationTrigger) { content, phase in
-            content
-        } animation: { phase in
-                .linear(duration: animationDuration)
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                startAnimationTrigger.toggle()
-            }
-        }
-    }
-}
