@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Represents the two ways a tip can be specified: as a percentage of the subtotal
+/// or as a fixed custom dollar amount.
 /// This enum is used by ``MainViewModel/tipOption`` to determine the calculation logic for the tip.
 enum TipOption {
     /// Tip is calculated as a percentage of the `checkAmount`.
