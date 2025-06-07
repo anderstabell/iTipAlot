@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShimmerView: View {
-    var body: some View {
+    var body: some View { // TODO: Split this up into 2 views
         VStack {
             TextShimmer(text: "Warming up the calculator...")
                 .padding()
