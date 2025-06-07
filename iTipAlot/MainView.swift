@@ -26,9 +26,9 @@ struct MainView: View {
                         .transition(.opacity)
                 } else {
                     LazyVStack {
-                        CardView(cardLabelText: "PER PERSON", totalAmount: viewModel.totalPerPerson, subtotalAmount: viewModel.subTotalPerPerson, tipAmount: viewModel.tipValuePerPerson)
+                        CardView(displayMode: .perPerson, viewModel: viewModel)
                         
-                        CardView(cardLabelText: "TOTAL", totalAmount: viewModel.totalAmountWithTip, subtotalAmount: viewModel.subTotal, tipAmount: viewModel.tipValue)
+                        CardView(displayMode: .total, viewModel: viewModel)
                         
                         TipOptionPickerView(tipOption: $viewModel.tipOption)
                         

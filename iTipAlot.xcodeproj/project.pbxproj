@@ -13,6 +13,8 @@
 		760447672B58107A008FDEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 760447662B58107A008FDEFB /* Preview Assets.xcassets */; };
 		761DCC032DC69DB300311ED9 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DCC022DC69DB300311ED9 /* ShimmerView.swift */; };
 		763183AB2DBEB3D4001ECF8A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763183AA2DBEB3D4001ECF8A /* LoadingView.swift */; };
+		768ECC8C2DF4711C0008E4DE /* TipOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768ECC8B2DF4711C0008E4DE /* TipOption.swift */; };
+		768ECC902DF472020008E4DE /* CardDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768ECC8F2DF472020008E4DE /* CardDisplayMode.swift */; };
 		76AAB7902D42D261004274FD /* TipOptionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */; };
 		76AAB7922D42D605004274FD /* TipSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AAB7912D42D605004274FD /* TipSelectionView.swift */; };
 		76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */; };
@@ -41,6 +43,8 @@
 		760447662B58107A008FDEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		761DCC022DC69DB300311ED9 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 		763183AA2DBEB3D4001ECF8A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		768ECC8B2DF4711C0008E4DE /* TipOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOption.swift; sourceTree = "<group>"; };
+		768ECC8F2DF472020008E4DE /* CardDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayMode.swift; sourceTree = "<group>"; };
 		76A7BA762D415091001C3058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOptionPickerView.swift; sourceTree = "<group>"; };
 		76AAB7912D42D605004274FD /* TipSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSelectionView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				76AAB78F2D42D261004274FD /* TipOptionPickerView.swift */,
 				76AAB7912D42D605004274FD /* TipSelectionView.swift */,
 				76D36C4E2D1496E600D8EFDC /* MainViewModel.swift */,
+				768ECC8B2DF4711C0008E4DE /* TipOption.swift */,
+				768ECC8F2DF472020008E4DE /* CardDisplayMode.swift */,
 				76F1CF5C2D146F0C001DFA92 /* CardView.swift */,
 				76F1CF5E2D1474EE001DFA92 /* GuestCountView.swift */,
 				760447632B58107A008FDEFB /* Assets.xcassets */,
@@ -185,7 +191,9 @@
 				76D36C4F2D1496E600D8EFDC /* MainViewModel.swift in Sources */,
 				760447622B581079008FDEFB /* MainView.swift in Sources */,
 				761DCC032DC69DB300311ED9 /* ShimmerView.swift in Sources */,
+				768ECC902DF472020008E4DE /* CardDisplayMode.swift in Sources */,
 				76AAB7902D42D261004274FD /* TipOptionPickerView.swift in Sources */,
+				768ECC8C2DF4711C0008E4DE /* TipOption.swift in Sources */,
 				76F1CF5D2D146F0C001DFA92 /* CardView.swift in Sources */,
 				760447602B581079008FDEFB /* iTipAlotApp.swift in Sources */,
 				76F1CF5F2D1474EE001DFA92 /* GuestCountView.swift in Sources */,

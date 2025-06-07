@@ -9,29 +9,45 @@ import SwiftUI
 
 struct CardView: View {
     
-    /// Properties for the card label
-    var cardLabelText = ""
-    var totalAmount = 0.0
-    var subtotalAmount = 0.0
-    var tipAmount = 0.0
+    let displayMode: CardDisplayMode
+    let viewModel: MainViewModel
+    
+    private var displayValues: (subtotal: Double, tip: Double, total: Double) {
+        switch displayMode {
+        case .perPerson:
+            return (
+                subtotal: viewModel.subTotalPerPerson,
+                tip: viewModel.tipValuePerPerson,
+                total: viewModel.totalPerPerson
+            )
+        case .total:
+            return (
+                subtotal: viewModel.subTotal,
+                tip: viewModel.tipValue,
+                total: viewModel.totalAmountWithTip
+            )
+        }
+    }
     
     var body: some View {
         
-        GroupBox(cardLabelText) {
+        let values = displayValues
+        
+        GroupBox(displayMode.labelText) {
             LabeledContent(
                 "Subtotal",
-                value: subtotalAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+                value: values.subtotal.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
             
             LabeledContent(
                 "Tip",
-                value: tipAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+                value: values.tip.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
             
             Divider()
                 .overlay(Color.primary)
             
             LabeledContent(
                 "Total",
-                value: totalAmount.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+                value: values.total.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
         }
         .padding(.bottom)
         .foregroundStyle(.primary)
@@ -40,5 +56,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(cardLabelText: "Per Person")
+    CardView(displayMode: .perPerson, viewModel: MainViewModel())
 }
