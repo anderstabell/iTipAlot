@@ -8,9 +8,6 @@
 import Foundation
 import Observation
 
-/// Represents the two ways a tip can be specified: as a percentage of the subtotal
-/// or as a fixed custom dollar amount.
-///
 /// This class manages the state and logic for calculating tips, designed to be observed by SwiftUI views.
 ///
 /// It holds all input values like check amount, number of people, and tip preferences,
