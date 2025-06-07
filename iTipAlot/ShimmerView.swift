@@ -9,14 +9,12 @@ import SwiftUI
 
 struct ShimmerView: View {
     var body: some View {
-        VStack {
-            
-            TextShimmerView(text: "Warming up the calculator...")
-                .padding()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.black)
-        .preferredColorScheme(.dark)
+        
+        TextShimmerView(text: "Warming up the calculator...")
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.black)
+            .preferredColorScheme(.dark)
     }
 }
 
