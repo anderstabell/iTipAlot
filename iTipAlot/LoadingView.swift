@@ -13,7 +13,7 @@ struct LoadingView: View {
     @State private var progress: Double = 0.0
     @State private var timer: Timer?
     @State private var rotationAngle: Double = 0.0
-        
+    
     let loadingDuration: Double = 3.0
     let timerInterval: Double = 0.05
     let rotationSpeed: Double = 4.0
@@ -85,6 +85,18 @@ struct LoadingView: View {
 }
 
 #Preview {
-    LoadingView(isLoading: .constant(true))
-        .preferredColorScheme(.dark)
+    
+    @Previewable @State var isLoading = true
+    
+    ZStack {
+        if isLoading {
+            LoadingView(isLoading: $isLoading)
+                .preferredColorScheme(.dark)
+                .transition(.opacity)
+        } else {
+            Text("Loading Complete!")
+                .font(.largeTitle)
+                .preferredColorScheme(.dark)
+        }
+    }
 }

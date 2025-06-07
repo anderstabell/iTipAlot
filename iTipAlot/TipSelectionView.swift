@@ -52,26 +52,23 @@ struct TipSelectionView: View {
 }
 
 #Preview {
-    struct PreviewWrapper: View {
-        @State var viewModel = MainViewModel()
-        @FocusState var focus: Bool
+    
+    @Previewable @State var viewModel = MainViewModel()
+    @Previewable @FocusState var focus: Bool
+    
+    VStack {
         
-        var body: some View {
-            VStack {
-                Picker("Preview Option", selection: $viewModel.tipOption.animation()) {
-                    Text("Percentage").tag(TipOption.percentage)
-                    Text("Custom").tag(TipOption.customAmount)
-                }
-                .pickerStyle(.segmented)
-                .padding()
-                
-                TipSelectionView(
-                    viewModel: $viewModel,
-                    customTipFocused: $focus
-                )
-                .padding()
-            }
+        Picker("Preview Option", selection: $viewModel.tipOption.animation()) {
+            Text("Percentage").tag(TipOption.percentage)
+            Text("Custom").tag(TipOption.customAmount)
         }
+        .padding(.bottom)
+        .pickerStyle(.segmented)
+        
+        TipSelectionView(
+            viewModel: $viewModel,
+            customTipFocused: $focus
+        )
     }
-    return PreviewWrapper()
+    .padding()
 }
