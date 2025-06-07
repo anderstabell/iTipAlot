@@ -22,5 +22,6 @@ struct TipOptionPickerView: View {
 }
 
 #Preview {
-    TipOptionPickerView(tipOption: .constant(.percentage))
+    @Previewable @State var tipOption: TipOption = .percentage
+    TipOptionPickerView(tipOption: $tipOption)
 }
