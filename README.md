@@ -9,7 +9,7 @@
 # Screenshots / video
 
 
-https://github.com/user-attachments/assets/625f6998-2fe5-4f1d-bf5b-d217df3774c1
+https://github.com/user-attachments/assets/91f0041d-bbf9-48ea-8aaa-3769da1ef98d
 
 <img src="https://github.com/user-attachments/assets/a78c6c18-fa40-4a1c-b0e2-f53b8fdd5548" height="420">
 
