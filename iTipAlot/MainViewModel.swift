@@ -14,6 +14,8 @@ import Observation
 /// and provides computed properties for derived values like tip amount, total per person, etc.
 @Observable final class MainViewModel {
     
+    // TODO: make the app global
+    
     // MARK: - Input Properties
     
     /// The initial amount of the check/bill, before any tip.
