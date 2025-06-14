@@ -64,7 +64,7 @@ struct MainView: View {
             .navigationTitle("Tip In")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .keyboard) {
+                ToolbarItem(placement: .keyboard) { // TODO: Resolve constraint issue
                     LabeledContent("") {
                         Button("Done") { dismissKeyboard() }
                     }

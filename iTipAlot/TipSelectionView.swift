@@ -24,21 +24,22 @@ struct TipSelectionView: View {
             .opacity(viewModel.tipOption == .percentage ? 1.0 : 0.0)
             .allowsHitTesting(viewModel.tipOption == .percentage)
             
-            TextField("Custom Total Tip", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
+            TextField("Custom Total Check Tip", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
                 .focused($customTipFocused)
                 .overlay(
                     
                     Group {
+                        
                         if viewModel.tipOption == .customAmount && viewModel.customTipAmount != nil {
-                            Button {
-                                viewModel.customTipAmount = nil
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.secondary)
-                            }
-                            .padding()
+                            
+                            let percentage = (viewModel.customTipAmount ?? 0) / (viewModel.subTotal > 0 ? viewModel.subTotal : 1)
+                            
+                            Text(percentage.formatted(.percent.precision(.fractionLength(2))))
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .padding(.trailing)
                         }
                     }
                     , alignment: .trailing
