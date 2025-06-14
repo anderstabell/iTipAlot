@@ -31,14 +31,15 @@ struct TipSelectionView: View {
                 .overlay(
                     
                     Group {
+                        
                         if viewModel.tipOption == .customAmount && viewModel.customTipAmount != nil {
-                            Button {
-                                viewModel.customTipAmount = nil
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.secondary)
-                            }
-                            .padding()
+                            
+                            let percentage = (viewModel.customTipAmount ?? 0) / (viewModel.subTotal > 0 ? viewModel.subTotal : 1)
+                            
+                            Text(percentage.formatted(.percent.precision(.fractionLength(2))))
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .padding(.trailing)
                         }
                     }
                     , alignment: .trailing
