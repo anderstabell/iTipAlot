@@ -24,7 +24,7 @@ struct TipSelectionView: View {
             .opacity(viewModel.tipOption == .percentage ? 1.0 : 0.0)
             .allowsHitTesting(viewModel.tipOption == .percentage)
             
-            TextField("Custom Total Check Tip", value: $viewModel.customTipAmount, format: .currency(code: "USD"))
+            TextField("Custom Total Check Tip", value: $viewModel.customTipAmount, format: .currency(code: viewModel.currencyCode))
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
                 .focused($customTipFocused)

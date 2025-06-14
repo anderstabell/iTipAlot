@@ -14,7 +14,10 @@ import Observation
 /// and provides computed properties for derived values like tip amount, total per person, etc.
 @Observable final class MainViewModel {
     
-    // TODO: make the app global
+    /// A helper property for the user's local currency code ---
+    /// The user's current locale currency code (e.g., "USD", "EUR", "JPY").
+    /// Defaults to "USD" if the system cannot determine the currency.
+    let currencyCode: String = Locale.current.currency?.identifier ?? "USD"
     
     // MARK: - Input Properties
     

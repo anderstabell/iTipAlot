@@ -36,18 +36,18 @@ struct CardView: View {
         GroupBox(displayMode.labelText) {
             LabeledContent(
                 "Subtotal",
-                value: values.subtotal.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+                value: values.subtotal.formatted(.currency(code: viewModel.currencyCode)))
             
             LabeledContent(
                 "Tip",
-                value: values.tip.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+                value: values.tip.formatted(.currency(code: viewModel.currencyCode)))
             
             Divider()
                 .overlay(Color.primary)
             
             LabeledContent(
                 "Total",
-                value: values.total.formatted(.currency(code: Locale.current.currency?.identifier ?? "USD")))
+                value: values.total.formatted(.currency(code: viewModel.currencyCode)))
         }
         .padding(.bottom)
         .foregroundStyle(.primary)
@@ -56,5 +56,6 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(displayMode: .perPerson, viewModel: MainViewModel())
+    let previewViewModel = MainViewModel()
+    return CardView(displayMode: .perPerson, viewModel: previewViewModel)
 }
