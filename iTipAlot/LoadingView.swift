@@ -10,6 +10,9 @@ import SwiftUI
 struct LoadingView: View {
     
     @Binding var isLoading: Bool
+    
+    let currencyCode: String
+    
     @State private var progress: Double = 0.0
     @State private var timer: Timer?
     @State private var rotationAngle: Double = 0.0
@@ -18,7 +21,9 @@ struct LoadingView: View {
     let timerInterval: Double = 0.05
     let rotationSpeed: Double = 4.0
     
-    let imageName = "dollarsign.circle.fill"
+    private var imageName: String {
+        return iconName(for: currencyCode)
+    }
     
     var body: some View {
         
@@ -57,6 +62,54 @@ struct LoadingView: View {
         .onDisappear(perform: stopTimer)
     }
     
+    private func iconName(for currencyCode: String) -> String {
+        switch currencyCode.uppercased() {
+        
+        case "USD", "AUD", "CAD": // US, Australian, Canadian Dollars
+            return "dollarsign.circle.fill"
+        case "EUR": // Euro
+            return "eurosign.circle.fill"
+        case "GBP": // British Pound
+            return "sterlingsign.circle.fill"
+        case "JPY", "CNY": // Japanese Yen, Chinese Yuan
+            return "yensign.circle.fill"
+        case "INR": // Indian Rupee
+            return "rupeesign.circle.fill"
+        case "BRL": // Brazilian Real
+            return "brazilianrealsign.circle.fill"
+        case "KRW": // South Korean Won
+            return "wonsign.circle.fill"
+        case "RUB": // Russian Ruble
+            return "rublesign.circle.fill"
+        case "TRY": // Turkish Lira
+            return "turkishlirasign.circle.fill"
+        case "ILS": // Israeli Shekel
+            return "shekelsign.circle.fill"
+        case "UAH": // Ukrainian Hryvnia
+            return "hryvniasign.circle.fill"
+        case "KZT": // Kazakhstani Tenge
+            return "tengesign.circle.fill"
+        case "GEL": // Georgian Lari
+            return "larisign.circle.fill"
+        case "NGA": // Nigerian Naira (Correct code is NGN, but common typo might be NGA)
+            return "nairasign.circle.fill"
+        case "MNT": // Mongolian Tugrik
+            return "tugriksign.circle.fill"
+        case "BDT": // Bangladeshi Taka
+            return "takasign.circle.fill"
+        case "CRC": // Costa Rican Colon
+            return "coloncurrencysign.circle.fill"
+        case "PYG": // Paraguayan Guarani
+            return "guaranisign.circle.fill"
+        case "PHP": // Philippine Peso
+            return "pesosign.circle.fill"
+        case "VND": // Vietnamese Dong
+            return "dongsign.circle.fill"
+        default:
+            return "creditcard.circle.fill"
+        }
+    }
+    
     func startLoadingSimulation() {
         stopTimer()
         progress = 0.0
@@ -90,9 +143,11 @@ struct LoadingView: View {
     
     ZStack {
         if isLoading {
-            LoadingView(isLoading: $isLoading)
+            
+            LoadingView(isLoading: $isLoading, currencyCode: "USD")
                 .preferredColorScheme(.dark)
                 .transition(.opacity)
+            
         } else {
             Text("Loading Complete!")
                 .font(.largeTitle)

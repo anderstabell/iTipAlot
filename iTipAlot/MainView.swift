@@ -22,7 +22,7 @@ struct MainView: View {
             ScrollView {
                 
                 if isLoading {
-                    LoadingView(isLoading: $isLoading)
+                    LoadingView(isLoading: $isLoading, currencyCode: viewModel.currencyCode)
                         .transition(.opacity)
                 } else {
                     LazyVStack {
@@ -39,7 +39,7 @@ struct MainView: View {
                             TextField(
                                 "How much?",
                                 value: $viewModel.checkAmount,
-                                format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                                format: .currency(code: viewModel.currencyCode))
                             .font(.system(size: 40))
                             .keyboardType(.decimalPad)
                             .focused($amountIsFocused)
@@ -64,7 +64,7 @@ struct MainView: View {
             .navigationTitle("Tip In")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .keyboard) { // TODO: Resolve constraint issue
+                ToolbarItem(placement: .keyboard) {
                     LabeledContent("") {
                         Button("Done") { dismissKeyboard() }
                     }
