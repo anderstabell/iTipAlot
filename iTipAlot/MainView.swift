@@ -22,7 +22,7 @@ struct MainView: View {
             ScrollView {
                 
                 if isLoading {
-                    LoadingView(isLoading: $isLoading)
+                    LoadingView(isLoading: $isLoading, currencyCode: viewModel.currencyCode)
                         .transition(.opacity)
                 } else {
                     LazyVStack {
