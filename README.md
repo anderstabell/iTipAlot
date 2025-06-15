@@ -7,7 +7,7 @@
 - Select custom tip by putting in currency amount of your choosing.
 - Automatically calculates the sub total and tip amount per person, and total check.
 # Globalization
-- The application is configured to work around the world. It will show correct currency symbol in loading view, and input text fields. If a symbol is not found for a specific country, a credit card symbol will be displayed.
+- The application is configured to work around the world. It will show correct currency symbol in loading view and input text fields. If a symbol is not found for a specific country, a credit card symbol will be displayed in the loading view, and the official ISO 4217 code in the input text fields next to the amount.
 # Screenshots / video
 
 
