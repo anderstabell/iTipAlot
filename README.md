@@ -1,11 +1,13 @@
 # `Tip In`
 ## Anders Tabell
-### `Tip In` computes the tip and total amount for a bill. The app uses the base amount and tip percentage, or custom dollar amount, to calculate the amount owed.
+### `Tip In` computes the tip and total amount for a bill. The application uses the base amount and tip percentage, or custom currency amount, to calculate the amount owed.
 # Features
 - Enter the bill amount.
 - Select a tip percentage between 0 and 100.
-- Select custom tip by putting in dollar amount.
+- Select custom tip by putting in currency amount of your choosing.
 - Automatically calculates the sub total and tip amount per person, and total check.
+# Globalization
+- The application is configured to work around the world. It will show correct currency symbol in loading view, and input text fields.
 # Screenshots / video
 
 
