@@ -64,9 +64,11 @@ struct LoadingView: View {
     
     private func iconName(for currencyCode: String) -> String {
         switch currencyCode.uppercased() {
-        
-        case "USD", "AUD", "CAD": // US, Australian, Canadian Dollars
+            
+        case "USD", "CAD": // US, Canadian Dollars
             return "dollarsign.circle.fill"
+        case "AUD": // Australian Dollar
+            return "australiandollarsign.circle.fill"
         case "EUR": // Euro
             return "eurosign.circle.fill"
         case "GBP": // British Pound
@@ -74,7 +76,7 @@ struct LoadingView: View {
         case "JPY", "CNY": // Japanese Yen, Chinese Yuan
             return "yensign.circle.fill"
         case "INR": // Indian Rupee
-            return "rupeesign.circle.fill"
+            return "indianrupeesign.circle.fill"
         case "BRL": // Brazilian Real
             return "brazilianrealsign.circle.fill"
         case "KRW": // South Korean Won
@@ -83,6 +85,8 @@ struct LoadingView: View {
             return "rublesign.circle.fill"
         case "TRY": // Turkish Lira
             return "turkishlirasign.circle.fill"
+        case "NOK": // Norwegian Krone
+            return "norwegiankronesign.circle.fill"
         case "ILS": // Israeli Shekel
             return "shekelsign.circle.fill"
         case "UAH": // Ukrainian Hryvnia
@@ -91,7 +95,7 @@ struct LoadingView: View {
             return "tengesign.circle.fill"
         case "GEL": // Georgian Lari
             return "larisign.circle.fill"
-        case "NGA": // Nigerian Naira (Correct code is NGN, but common typo might be NGA)
+        case "NGN": // Nigerian Naira
             return "nairasign.circle.fill"
         case "MNT": // Mongolian Tugrik
             return "tugriksign.circle.fill"
@@ -105,6 +109,16 @@ struct LoadingView: View {
             return "pesosign.circle.fill"
         case "VND": // Vietnamese Dong
             return "dongsign.circle.fill"
+        case "THB": // Thai Baht
+            return "bahtsign.circle.fill"
+        case "CHF": // Swiss Franc
+            return "francsign.circle.fill"
+        case "GHS": // Ghanaian Cedi
+            return "cedisign.circle.fill"
+        case "LAK": // Lao Kip
+            return "kipsign.circle.fill"
+        case "AZN": // Azerbaijani Manat
+            return "manatsign.circle.fill"
         default:
             return "creditcard.circle.fill"
         }
