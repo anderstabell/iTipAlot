@@ -13,7 +13,7 @@ struct MainView: View {
     @FocusState private var customTipFocused: Bool
     @FocusState private var amountIsFocused: Bool
     
-    @State private var isLoading: Bool = true // Make changes for iPad
+    @State private var isLoading: Bool = true // TODO: Make changes for iPad
     
     var body: some View {
         
