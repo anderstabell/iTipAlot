@@ -13,7 +13,9 @@ struct MainView: View {
     @FocusState private var customTipFocused: Bool
     @FocusState private var amountIsFocused: Bool
     
-    @State private var isLoading: Bool = true // TODO: Make changes for iPad
+    @State private var isLoading: Bool = true
+    
+    @Environment(\.horizontalSizeClass) var sizeClass
     
     var body: some View {
         
@@ -25,37 +27,80 @@ struct MainView: View {
                     LoadingView(isLoading: $isLoading, currencyCode: viewModel.currencyCode)
                         .transition(.opacity)
                 } else {
-                    LazyVStack {
-                        CardView(displayMode: .perPerson, viewModel: viewModel)
+                    
+                    if sizeClass == .regular {
                         
-                        CardView(displayMode: .total, viewModel: viewModel)
+                        HStack(alignment: .top, spacing: 32) {
+                            
+                            VStack {
+                                CardView(displayMode: .perPerson, viewModel: viewModel)
+                                CardView(displayMode: .total, viewModel: viewModel)
+                                Spacer()
+                            }
+                            .frame(maxWidth: 400)
+                            
+                            VStack {
+                                TipOptionPickerView(tipOption: $viewModel.tipOption)
+                                
+                                TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
+                                    .padding(.bottom)
+                                
+                                Section {
+                                    TextField(
+                                        "How much?",
+                                        value: $viewModel.checkAmount,
+                                        format: .currency(code: viewModel.currencyCode))
+                                    .font(.system(size: 40))
+                                    .keyboardType(.decimalPad)
+                                    .focused($amountIsFocused)
+                                } header: {
+                                    LabeledContent("CHECK AMOUNT:", value: "")
+                                }
+                                .padding(.bottom)
+                                
+                                Section {
+                                    GuestCountView(guestCount: $viewModel.numberOfPeople)
+                                } header: {
+                                    LabeledContent("SPLIT BY:", value: "")
+                                }
+                            }
+                        }
+                        .padding(30)
                         
-                        TipOptionPickerView(tipOption: $viewModel.tipOption)
+                    } else {
                         
-                        TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
+                        LazyVStack {
+                            CardView(displayMode: .perPerson, viewModel: viewModel)
+                            
+                            CardView(displayMode: .total, viewModel: viewModel)
+                            
+                            TipOptionPickerView(tipOption: $viewModel.tipOption)
+                            
+                            TipSelectionView(viewModel: $viewModel, customTipFocused: $customTipFocused)
+                                .padding(.bottom)
+                            
+                            Section {
+                                TextField(
+                                    "How much?",
+                                    value: $viewModel.checkAmount,
+                                    format: .currency(code: viewModel.currencyCode))
+                                .font(.system(size: 40))
+                                .keyboardType(.decimalPad)
+                                .focused($amountIsFocused)
+                            } header: {
+                                LabeledContent("CHECK AMOUNT:", value: "")
+                            }
                             .padding(.bottom)
-                        
-                        Section {
-                            TextField(
-                                "How much?",
-                                value: $viewModel.checkAmount,
-                                format: .currency(code: viewModel.currencyCode))
-                            .font(.system(size: 40))
-                            .keyboardType(.decimalPad)
-                            .focused($amountIsFocused)
-                        } header: {
-                            LabeledContent("CHECK AMOUNT:", value: "")
+                            
+                            Section {
+                                GuestCountView(guestCount: $viewModel.numberOfPeople)
+                            } header: {
+                                LabeledContent("SPLIT BY:", value: "")
+                            }
                         }
-                        .padding(.bottom)
-                        
-                        Section {
-                            GuestCountView(guestCount: $viewModel.numberOfPeople)
-                        } header: {
-                            LabeledContent("SPLIT BY:", value: "")
-                        }
+                        .transition(.opacity)
+                        .padding()
                     }
-                    .transition(.opacity)
-                    .padding()
                 }
             }
             .animation(.easeInOut(duration: 0.4), value: isLoading)
